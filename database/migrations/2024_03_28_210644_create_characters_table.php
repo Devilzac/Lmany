@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('description');
             $table->boolean('main_character')->default(false);
             $table->boolean('ghana')->default(false);
+            $table->foreignId('server_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

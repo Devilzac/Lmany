@@ -30,15 +30,20 @@ class Character extends Model
     {
         try {
             $main = Character::findOrFail($idMain);
-
             foreach ($main as $char) {
-                foreach ($alts as $alt) {
-                    if(!$char->relatedCharacters()->where('related_id', $alt)->exists()){
-                        $char->relatedCharacters()->attach($alt);                 
+                foreach ($alts as $alt_id) {
+                    if(!$char->relatedCharacters()->where('related_id', $alt_id)->exists()){
+                        $char->relatedCharacters()->attach($alt_id);                 
+                    }
+                    
+                    $alt = Character::findOrFail($alt_id);
+                    if(!$alt->relatedCharacters()->where('related_id', $char->id)->exists()){
+                        $alt->relatedCharacters()->attach($char->id);                 
                     }
             
                 }
             }
+            
         } catch (ModelNotFoundException $e) {
             return response()->json(['error' => 'Character not found'], 404);
         }
@@ -83,4 +88,10 @@ class Character extends Model
     {
         return $this->belongsToMany(Character::class, 'character_character', 'character_id', 'related_id')->withTimestamps();
     }
+    
+    public function server()
+    {
+        return $this->belongsTo(Server::class);
+    }
+    
 }

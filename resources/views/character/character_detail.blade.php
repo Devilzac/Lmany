@@ -1,7 +1,7 @@
 @extends('layout')
 @section('title', 'Adding Character')
 @section('content')
-    <div id="container">     
+    <div id="container" class="detail">     
         @if (isset($character))     
             <h1>Main</h1>
             <!-- START LIST -->
@@ -39,12 +39,12 @@
 
     </div>    
     @if (isset($character))   
-        <div id="container" style="margin-top:15px;">       
+        <div id="container" class="detail">       
             <h2>Alts</h2>
                 <ul class="list-grid">
                     @foreach ($character->relatedCharacters as $alt) 
                         <li class="chip">
-                            <a href="{{url('/alt/'.$alt->id)}}">
+                            <a href="{{url('/character/'.$alt->id)}}">
                                 <div class="charList">
                                     <img class="" src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$alt->name}}">
                                     <div class="mainCharInfo">

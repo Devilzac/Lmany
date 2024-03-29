@@ -43,6 +43,10 @@ body{
                 color:#fff;
             }
         }
+        &.detail{
+            height: auto;
+            margin: 15px auto;
+        }
 }
 .lupa{
     stroke:#fff !important;
@@ -67,7 +71,7 @@ header{
     padding: 30px;
     border-radius: 7px !important;
     width: 90%;
-    margin: auto;
+    margin: 15px auto;
     max-height: 470px;
     overflow: auto;   
     padding: 0 !important;
