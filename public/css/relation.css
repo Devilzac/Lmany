@@ -1,0 +1,73 @@
+
+.mainChar, .form-check-label{
+    text-align: center;
+    padding:15px;
+    color:#fff;
+}   
+body{
+    background: url('../images/bg/bg1.webp');
+    background-size: cover;
+    max-width: 1200px;
+    margin: auto;
+}
+#container{
+    background: rgba(0,0,0, 0.8);
+    padding: 30px;
+    border-radius: 7px !important;
+    width: 90%;
+    height: 90vh;
+    margin: auto;
+    overflow: auto;   
+            &::-webkit-scrollbar-track
+            {
+            border-radius: 10px;
+            background-color: transparent;
+            }
+
+            &::-webkit-scrollbar
+            {
+            width: 12px;
+            background-color: transparent;
+            }
+
+            &::-webkit-scrollbar-thumb
+            {
+            border-radius: 10px;
+            background-color: #555;
+            }     
+       
+}
+.block{
+display: flex;
+justify-content: flex-start;
+flex-direction: column;
+width: 200px;
+}
+body{
+padding: 15px;
+}
+.block input{
+margin: 5px 0;
+}
+.itemReceived{
+align-self: flex-start;
+}
+.flexiCenter{
+display: flex;
+flex-direction: row;
+align-items: center;
+}
+.form-check {
+display: grid;
+grid-template-columns: auto auto auto auto;
+row-gap: 5px;
+color: #fff;
+}
+h3{
+color: #fff;
+left: -15px;
+position: relative;
+}
+hr{
+color: #fff;
+}

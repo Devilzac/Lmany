@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'modeseven';
+    src: url('../font/modeseven.ttf');
+}
+
+* {
+        font-family: 'modeseven', Arial, Helvetica, sans-serif;
+        font-optical-sizing: auto;
+}  
