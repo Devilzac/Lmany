@@ -10,3 +10,8 @@ Route::get('/add-char', [CharacterController::class, "create"]);
 Route::post('/adding-char', [CharacterController::class, "store"]);
 
 
+Route::get('/search', [CharacterController::class, 'search'])->name('character.search');
+
+
+Route::get('/relation', [CharacterController::class, 'relationIndex']);
+Route::post('/relationship', [CharacterController::class, 'relationing']);

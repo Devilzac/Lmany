@@ -9,7 +9,7 @@
         <ul class="list-flex">
             @foreach ($characters as $key => $character)    
             <li>
-                <a href="{{url('/main/'.$character->id)}}">
+                <a href="{{url('/character/'.$character->id)}}">
                     <div class="charList">
                         <img class="" src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$character->name}}">
                         <div class="mainCharInfo">

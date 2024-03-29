@@ -15,12 +15,47 @@ class Character extends Model
         'tribe',
         'description',
         'main_character',
-        'ghana'
+        'ghana',
+        'main',
+        'alt'
     ];
+    
+
+    protected $casts = [
+        'main'=>[],
+        'alt'=>[]
+    ];
+
+    public function mainRelation($idMain, $alts)
+    {
+        try {
+            $main = Character::findOrFail($idMain);
+
+            foreach ($main as $char) {
+                foreach ($alts as $alt) {
+                    if(!$char->relatedCharacters()->where('related_id', $alt)->exists()){
+                        $char->relatedCharacters()->attach($alt);                 
+                    }
+            
+                }
+            }
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['error' => 'Character not found'], 404);
+        }
+    }
 
     public function findById($id){
         try {
             $result = Character::findOrFail($id);
+            return $result;
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['error' => 'Character not found'], 404);
+        }
+    }
+    
+    public function findByName($search_param){
+        try {
+            $result =  Character::where('name', 'like', '%' . $search_param . '%')->first();
             return $result;
         } catch (ModelNotFoundException $e) {
             return response()->json(['error' => 'Character not found'], 404);
@@ -42,6 +77,8 @@ class Character extends Model
         );
         return $result;
     }
+
+
     public function relatedCharacters()
     {
         return $this->belongsToMany(Character::class, 'character_character', 'character_id', 'related_id')->withTimestamps();

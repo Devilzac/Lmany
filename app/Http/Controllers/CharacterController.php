@@ -40,11 +40,36 @@ class CharacterController extends Controller
     public function show($id)
     {
         $char = new Character();
-        $character =  $char->findById($id);
-        
+        $character =  $char->findById($id);        
         return view("character.character_detail", compact('character'));
-
     }
+
+    
+  
+    public function search(Request $request)
+    {
+        $character = new Character();
+        $search_param = $request->query('search');
+        $character = $character->findByName($search_param);
+        return view('character.character_detail', compact('character'));
+      
+    }
+    public function relationIndex(Request $request)
+    {        
+        $character = Character::all();
+        return view('character.characterRelation', compact('character'));
+    }
+
+    public function relationing(Request $request)
+    {               
+        $mainRelationn = new Character();
+        $main = $request->input('main');
+        $alt = $request->input('alt');  
+        
+        $mainRelationn->mainRelation($main, $alt);
+        return redirect('/')->with('message', 'Item saved correctly!!!');;
+    }
+    
 
     /**
      * Show the form for editing the specified resource.

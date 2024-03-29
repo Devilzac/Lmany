@@ -7,8 +7,9 @@ body{
     background: url('../images/bg/bg1.webp');
     background-size: cover;
     max-width: 1200px;
-    margin: auto;
+    margin: auto !important;
 }
+
 #container{
     background: rgba(0,0,0, 0.8);
     padding: 30px;
@@ -51,79 +52,30 @@ header{
     background: black;
     flex-direction: row;
 }
-.form-switch .form-check-input{
-    margin: 10px 0px 5px 5px;
-    background-image: url('../images/toggle/pixelSword2.webp');
-    background-position: left center;
-    border-radius: 2em;
-    transition: background-position .15s ease-in-out;         
-    background-color: green;
-    border-color: green;
-    width: 100px;
-    height: 20px;
-    
-    border-color: #86b7fe;
-    outline: 0;
-    box-shadow: 0 0 0 0.25rem rgba(0,150,0,.25);
-    
-    animation-name: formSwutch;
-    animation-duration: 1s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    animation-timing-function: ease-in-out;
-}
-@keyframes formSwutch {
-    from {            
-        box-shadow: 0 0 0 0.2rem rgba(0,150,0,.2);
-    }
-    to {              
-        box-shadow: 0 0 0 0.25rem rgba(0,150,0,.6);
-    }
-}
-.form-switch .form-check-input::before{
-    content:"Main";
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    top: 0;
-    font-size: 13px;
-}
-.form-switch .form-check-input:checked::before{
-    content:"Alt";
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    font-size: 13px;
-}
 
-.form-switch .form-check-input:checked{
-    background-image: url('../images/toggle/pixelSword.webp');
-    background-position: right center;
-    border-radius: 2em;
-    transition: background-position .15s ease-in-out;     
-}
-
-.form-switch{
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-}
 .cntSearch {
-    display: flex;
+    display: flex;  
+    flex-direction: column;
+    width: 100%;
+    align-items: self-end;
     button{
         height: fit-content;
-        margin-left: 10px;
     }
 }
-.navbar{
-    background: rgba(0,0,0, 0.7) !important;
-    border-radius: 7px;
+.navbar{    
+    background: rgba(0,0,0, 0.8);
+    padding: 30px;
+    border-radius: 7px !important;
     width: 90%;
-    left: 0;
-    right: 0;
-    margin: 15px auto 15px auto;
-    padding: 0;
-    overflow: hidden;
+    margin: auto;
+    max-height: 470px;
+    overflow: auto;   
+    padding: 0 !important;
+}
+.navbar-brand{
+    width: 90%;
+    display: block;
+    margin: 15px auto !important;
 }
 .navbar .nav-link, .navbar-brand{
     color: #fff !important;
@@ -143,6 +95,7 @@ header{
 #navbarSupportedContent{
     background: rgba(0,0,0, 0.3);
     padding: 15px;
+    width: 100%;
 }
 .container-fluid{
     padding: 0px 0px 0px 15px;
@@ -202,7 +155,7 @@ header{
 }
 .addMainAlt{
     display: flex;
-    width: 100%;
+    width: auto;
     flex-direction: row;
     padding: 0;
     vertical-align: middle;
@@ -228,18 +181,6 @@ header{
         height: 100%;
         filter: invert(1);
     }
-}
-.navbar.charArea{
-    overflow: visible;
-        .nav-item{
-            a{
-                transition: all 0.5s;
-            &:hover{
-                color: #46b363 !important;
-                transition: all 0.5s;
-            }
-        }
-    }          
 }
 
 @media only screen and (max-width: 768px) {
