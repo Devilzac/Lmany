@@ -6,7 +6,7 @@
         <div class="container">                 
           <h3>Mains</h3>
           <div class="row justify-content-between">
-            <div class="form-check form-switch col-12">
+            <div class="form-check relation-list">
               @foreach ($character as $char)
                   <div class="flexiCenter">
                     <input name="main[]" class="" type="radio" id="flexSwitch{{$char->name}}" value="{{$char->id}}">
@@ -20,7 +20,7 @@
         <div class="container">     
           <h3>Alts</h3> 
           <div class="row justify-content-between">          
-            <div class="form-check form-switch col-12">
+            <div class="form-check relation-list">
               @foreach ( $character as $altChar)
                   <div class="flexiCenter">
                     <input name="alt[]"  class="" type="checkbox" id="flexSwitch{{$altChar->name}}" value="{{$altChar->id}}">

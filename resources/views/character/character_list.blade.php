@@ -21,7 +21,8 @@
                             </span>
                         </div>
                         <div class="altAmount">
-                            Alts: {{ count($character->relatedCharacters) }} 
+                            Related: {{ count($character->relatedCharacters) }}
+                            Server: {{$character->server->name}}
                         </div>
                     </div>
                 </a>

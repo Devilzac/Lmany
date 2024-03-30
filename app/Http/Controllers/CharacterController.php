@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Server;
 use App\Models\Character;
 use Illuminate\Http\Request;
 
@@ -12,8 +13,10 @@ class CharacterController extends Controller
      */
     public function index()
     {
+        
+        $servers = Server::all();
         $characters = Character::all();
-        return view("character.character_list", compact("characters"));
+        return view("character.character_list", compact("characters", "servers"));
     }
 
     /**
@@ -50,10 +53,21 @@ class CharacterController extends Controller
     {
         $character = new Character();
         $search_param = $request->query('search');
-        $character = $character->findByName($search_param);
-        return view('character.character_detail', compact('character'));
+        $characters = $character->findByName($search_param);
+        return view('character.character_list', compact('characters'));
       
     }
+    public function filterSearch(Request $request)
+    {
+        $character = new Character();
+        dd($request->all());
+        $search_param = $request->query('search');
+
+        $characters = $character->findByName($search_param);
+        return view('character.character_list', compact('characters'));
+      
+    }
+
     public function relationIndex(Request $request)
     {        
         $character = Character::all();

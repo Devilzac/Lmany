@@ -2,23 +2,23 @@
 @section('title', 'Adding Character')
 @section('content')
     <div id="container" class="detail">     
-        @if (isset($character))     
-            <h1>Main</h1>
+        @if (isset($character))   
             <!-- START LIST -->
             <ul class="list-flex">
                 <li>          
                         <div class="charList">                        
-                            <img class="" src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$character->name}}">
+                            <img src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$character->name}}">
                             <div class="mainCharInfo">
-                                <span class="">
+                                <span>
                                 {{$character->name}}
                                 </span>
-                                <span class="">
+                                <span>
                                     {{$character->tribe}}
                                 </span>
                             </div>
                             <div class="altAmount">
-                                Alt: {{ count($character->relatedCharacters) }} 
+                                Related: {{ count($character->relatedCharacters) }}
+                                Server: {{$character->server->name}}
                             </div>
                         </div>   
                 </li>    
@@ -40,18 +40,18 @@
     </div>    
     @if (isset($character))   
         <div id="container" class="detail">       
-            <h2>Alts</h2>
+            <h2>Related</h2>
                 <ul class="list-grid">
                     @foreach ($character->relatedCharacters as $alt) 
                         <li class="chip">
                             <a href="{{url('/character/'.$alt->id)}}">
                                 <div class="charList">
-                                    <img class="" src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$alt->name}}">
+                                    <img src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$alt->name}}">
                                     <div class="mainCharInfo">
-                                        <span class="">
+                                        <span>
                                         {{$alt->name}} 
                                         </span>
-                                        <span class="">
+                                        <span>
                                             {{$alt->tribe}}
                                         </span>
                                     </div>

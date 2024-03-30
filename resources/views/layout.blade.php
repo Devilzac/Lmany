@@ -13,7 +13,47 @@
   
 </head>
 <body>
+    <h1><a class="navbar-brand" href="{{ url('/') }}">Mystera Legacy Tracker</a></h1>
     <x-nav></x-nav>
+    <div class="navbar">
+        <div class="navbar-plus-filter">            
+            <!-- START SEARCH -->
+            <form action={{ route('character.filtersearch') }} class="d-flex" role="search" method="GET">
+                <div class="cntSearch">
+                    <div class="nav-filter">
+                        <div class="form-group">
+                            <div class="btn-container character-type">
+                                        <label class="switch btn-color-mode-switch">
+                                            <input value="1" id="character-type" name="character-type" type="checkbox">
+                                            <label class="btn-color-mode-switch-inner" data-off="Alt" data-on="Main" for="character-type"></label>
+                                        </label>                        
+                                    
+                            </div>
+                        </div>
+                        <div class="form-group">    
+                                <select id="inputState" class="form-control char-filter">                               
+                                    @foreach ($servers as $key => $server)                                        
+                                        <option {{ $key==0 ? 'selected' : '' }} value="{{ $server->id }}">{{ $server->name }}</option>
+                                    @endforeach    
+                                    <select name="myselect">
+                                        @foreach ($options as $key => $value)
+                                            <option value="{{ $key }}"
+                                            @if ($key == old('myselect', $model->option))
+                                                selected="selected"
+                                            @endif
+                                            >{{ $value }}</option>
+                                        @endforeach
+                                        </select>                            
+                                </select>
+                            </div> 
+                        <div class="btnAlt">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </form>            
+        </div>  
+    </div>
     @yield('content')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 class Character extends Model
 {
     use HasFactory;
-
     protected $fillable = [
         'name',
         'tribe',
@@ -60,7 +59,7 @@ class Character extends Model
     
     public function findByName($search_param){
         try {
-            $result =  Character::where('name', 'like', '%' . $search_param . '%')->first();
+            $result =  Character::where('name', 'like', '%' . $search_param . '%')->get();
             return $result;
         } catch (ModelNotFoundException $e) {
             return response()->json(['error' => 'Character not found'], 404);
