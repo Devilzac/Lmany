@@ -11,9 +11,13 @@
                             <div class="mainCharInfo">
                                 <span>
                                 {{$character->name}}
+                                    @if($character->relatedMainCharactersCount() > 1)
+                                    <br>
+                                    >>> Shared with Main Accounts <<<
+                                    @endif
                                 </span>
                                 <span>
-                                    {{$character->tribe}}
+                                    {{$character->tribe}}   
                                 </span>
                             </div>
                             <div class="altAmount">

@@ -13,12 +13,12 @@
   
 </head>
 <body>
-    <h1><a class="navbar-brand" href="{{ url('/') }}">Mystera Legacy Tracker</a></h1>
+    <h1 class="mainTitle"><a class="navbar-brand" href="{{ url('/') }}">Mystera Legacy Tracker</a></h1>
     <x-nav></x-nav>
+<form action={{ route('character.filtersearch') }} class="d-flex filter-cnt row-wrap" role="search" method="GET">
     <div class="navbar">
         <div class="navbar-plus-filter">            
             <!-- START SEARCH -->
-            <form action={{ route('character.filtersearch') }} class="d-flex" role="search" method="GET">
                 <div class="cntSearch">
                     <div class="nav-filter">
                         <div class="form-group">
@@ -29,21 +29,27 @@
                                 </label>    
                             </div>
                         </div>
-                        <div class="form-group">    
-                                <select id="inputState" name="selectedServer" class="form-control char-filter">                               
-                                    @foreach ($serversList as $key => $server)                                        
-                                        <option {{ $key==0 ? 'selected' : '' }} value="{{ $server->id }}">{{ $server->name }}</option>
-                                    @endforeach                             
-                                </select>
-                            </div> 
                         <div class="btnAlt">
                             <button class="btn btn-outline-success" type="submit">Search</button>
                         </div>
                     </div>
-                </div>
-            </form>            
+                </div>           
         </div>  
     </div>
+    <div class="navbar chip-cnt">
+        <div class="form-group chips">    
+            {{-- <select id="inputState" name="selectedServer" class="form-control char-filter">                               
+                @foreach ($serversList as $key => $server)                                        
+                    <option {{ $key==0 ? 'selected' : '' }} value="{{ $server->id }}">{{ $server->name }}</option>
+                @endforeach                             
+            </select> --}}
+            @foreach ($serversList as $key => $server)                                 
+                <input class="server-display-chip" {{ $key==0 ? 'checked' : '' }} value="{{ $server->id }}" id="server{{ $server->name }}" name="server" type="radio">
+                <label class="server-chip" data-off="Alt" data-on="Main" for="server{{ $server->name }}">{{ $server->name }}</label>
+            @endforeach  
+        </div> 
+    </div>                
+</form> 
     @yield('content')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

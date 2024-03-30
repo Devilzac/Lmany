@@ -88,6 +88,13 @@ class Character extends Model
         return $this->belongsToMany(Character::class, 'character_character', 'character_id', 'related_id')->withTimestamps();
     }
     
+    public function relatedMainCharactersCount()
+    {   
+        return $this->belongsToMany(Character::class, 'character_character', 'character_id', 'related_id')
+        ->where('characters.main_character', 1)
+        ->withTimestamps()->count();
+    }
+    
     public function server()
     {
         return $this->belongsTo(Server::class);

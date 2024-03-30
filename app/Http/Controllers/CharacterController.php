@@ -29,7 +29,8 @@ class CharacterController extends Controller
      */
     public function create()
     {        
-        return view("character.character_create");
+        $serversList = $this->servers;
+        return view("character.character_create", compact('serversList'));
     }
 
     /**
