@@ -23,16 +23,15 @@
                     <div class="nav-filter">
                         <div class="form-group">
                             <div class="btn-container character-type">
-                                        <label class="switch btn-color-mode-switch">
-                                            <input value="1" id="character-type" name="character-type" type="checkbox">
-                                            <label class="btn-color-mode-switch-inner" data-off="Alt" data-on="Main" for="character-type"></label>
-                                        </label>                        
-                                    
+                                <label class="switch btn-color-mode-switch">
+                                    <input value="1" id="characterType" name="characterType" type="checkbox">
+                                    <label class="btn-color-mode-switch-inner" data-off="Alt" data-on="Main" for="characterType"></label>
+                                </label>    
                             </div>
                         </div>
                         <div class="form-group">    
                                 <select id="inputState" name="selectedServer" class="form-control char-filter">                               
-                                    @foreach ($servers as $key => $server)                                        
+                                    @foreach ($serversList as $key => $server)                                        
                                         <option {{ $key==0 ? 'selected' : '' }} value="{{ $server->id }}">{{ $server->name }}</option>
                                     @endforeach                             
                                 </select>

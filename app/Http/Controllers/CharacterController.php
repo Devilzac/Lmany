@@ -8,15 +8,20 @@ use Illuminate\Http\Request;
 
 class CharacterController extends Controller
 {
+    protected $servers;
+
+    public function __construct(Server $servers)
+    {
+        $this->servers = $servers::all();
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
-    {
-        
-        $servers = Server::all();
+    {         
+        $serversList = $this->servers;
         $characters = Character::all();
-        return view("character.character_list", compact("characters", "servers"));
+        return view("character.character_list", compact("characters", "serversList"));
     }
 
     /**
@@ -57,15 +62,12 @@ class CharacterController extends Controller
         return view('character.character_list', compact('characters'));
       
     }
-    public function filterSearch(Request $request)
-    {
-        $character = new Character();
-        dd($request->all());
-        $search_param = $request->query('search');
-
-        $characters = $character->findByName($search_param);
-        return view('character.character_list', compact('characters'));
-      
+    public function filterSearch(Request $request){
+        
+        $serversList = $this->servers;
+        $newSearch = new Server();
+        $characters = $newSearch->filteredCharacterMainServerSearch($request);
+        return view('character.character_list', compact('characters','serversList'));      
     }
 
     public function relationIndex(Request $request)
