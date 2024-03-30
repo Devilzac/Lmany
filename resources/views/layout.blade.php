@@ -31,19 +31,10 @@
                             </div>
                         </div>
                         <div class="form-group">    
-                                <select id="inputState" class="form-control char-filter">                               
+                                <select id="inputState" name="selectedServer" class="form-control char-filter">                               
                                     @foreach ($servers as $key => $server)                                        
                                         <option {{ $key==0 ? 'selected' : '' }} value="{{ $server->id }}">{{ $server->name }}</option>
-                                    @endforeach    
-                                    <select name="myselect">
-                                        @foreach ($options as $key => $value)
-                                            <option value="{{ $key }}"
-                                            @if ($key == old('myselect', $model->option))
-                                                selected="selected"
-                                            @endif
-                                            >{{ $value }}</option>
-                                        @endforeach
-                                        </select>                            
+                                    @endforeach                             
                                 </select>
                             </div> 
                         <div class="btnAlt">
