@@ -23,8 +23,8 @@
             <div class="form-check relation-list">
               @foreach ( $character as $altChar)
                   <div class="flexiCenter">
-                    <input name="alt[]"  class="" type="checkbox" id="flexSwitch{{$altChar->name}}" value="{{$altChar->id}}">
-                    <label name="alt[]"  class="form-check-label" for="flexSwitch{{$altChar->name}}">{{$altChar->name}}</label>
+                    <input name="alt[]"  class="" type="checkbox" id="flexCheck{{$altChar->name}}" value="{{$altChar->id}}">
+                    <label name="alt[]"  class="form-check-label" for="flexCheck{{$altChar->name}}">{{$altChar->name}}</label>
                   </div>
               @endforeach   
             </div>

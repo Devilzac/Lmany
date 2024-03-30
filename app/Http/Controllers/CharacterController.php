@@ -47,19 +47,21 @@ class CharacterController extends Controller
      */
     public function show($id)
     {
+        $serversList = $this->servers;
         $char = new Character();
         $character =  $char->findById($id);        
-        return view("character.character_detail", compact('character'));
+        return view("character.character_detail", compact('character','serversList'));
     }
 
     
   
     public function search(Request $request)
     {
+        $serversList = $this->servers;
         $character = new Character();
         $search_param = $request->query('search');
         $characters = $character->findByName($search_param);
-        return view('character.character_list', compact('characters'));
+        return view('character.character_list', compact('characters','serversList'));
       
     }
     public function filterSearch(Request $request){
@@ -72,8 +74,9 @@ class CharacterController extends Controller
 
     public function relationIndex(Request $request)
     {        
+        $serversList = $this->servers;
         $character = Character::all();
-        return view('character.characterRelation', compact('character'));
+        return view('character.characterRelation', compact('character','serversList'));
     }
 
     public function relationing(Request $request)
