@@ -13,13 +13,6 @@
    .itemReceived{
     align-self: flex-start;
    }  
-        body{
-            background: url('../images/bg/bg1.webp');
-            background-size: cover;
-            height: 100vh;
-            max-width: 1200px;
-            margin: auto;
-        }
         #container{
             background: rgba(0,0,0, 0.8);
             padding: 30px;

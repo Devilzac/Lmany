@@ -4,12 +4,6 @@
     padding:15px;
     color:#fff;
 }   
-body{
-    background: url('../images/bg/bg1.webp');
-    background-size: cover;
-    max-width: 1200px;
-    margin: auto;
-}
 #container{
     background: rgba(0,0,0, 0.8);
     padding: 30px;
@@ -42,9 +36,6 @@ display: flex;
 justify-content: flex-start;
 flex-direction: column;
 width: 200px;
-}
-body{
-padding: 15px;
 }
 .block input{
 margin: 5px 0;

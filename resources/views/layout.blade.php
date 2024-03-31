@@ -13,44 +13,47 @@
   
 </head>
 <body>
-    <h1 class="mainTitle"><a class="navbar-brand" href="{{ url('/') }}">Mystera Legacy Tracker</a></h1>
-    <x-nav></x-nav>
-    <input type="checkbox" name="filterToggle" id="filterToggle" />
-    <label class="filterToggle" for="filterToggle">
-        <img src="{{ asset('/images/toggle/shield.webp') }}" alt="">
-    </label>
-<form action={{ route('character.filtersearch') }} class="d-flex filter-cnt row-wrap" role="search" method="POST">
-    @csrf
-    <div class="navbar">
-        <div class="navbar-plus-filter">            
-            <!-- START SEARCH -->
-                <div class="cntSearch">
-                    <div class="nav-filter">
-                        <div class="form-group">
-                            <div class="btn-container character-type">
-                                <label class="switch btn-color-mode-switch">
-                                    <input value="1" id="character-type" name="character-type" type="checkbox">
-                                    <label class="btn-color-mode-switch-inner" data-off="Alt" data-on="Main" for="character-type"></label>
-                                </label>    
+    <div class="layout-content">
+
+        <h1 class="mainTitle"><a class="navbar-brand" href="{{ url('/') }}">Mystera Legacy Tracker</a></h1>
+        <x-nav></x-nav>
+        <input type="checkbox" name="filterToggle" id="filterToggle" />
+        <label class="filterToggle" for="filterToggle">
+            <img src="{{ asset('/images/toggle/shield.webp') }}" alt="">
+        </label>
+        <form action={{ route('character.filtersearch') }} class="d-flex filter-cnt row-wrap" role="search" method="POST">
+            @csrf
+            <div class="navbar">
+                <div class="navbar-plus-filter">            
+                    <!-- START SEARCH -->
+                        <div class="cntSearch">
+                            <div class="nav-filter">
+                                <div class="form-group">
+                                    <div class="btn-container character-type">
+                                        <label class="switch btn-color-mode-switch">
+                                            <input value="1" id="character-type" name="character-type" type="checkbox">
+                                            <label class="btn-color-mode-switch-inner" data-off="Alt" data-on="Main" for="character-type"></label>
+                                        </label>    
+                                    </div>
+                                </div>
+                                <div class="btnAlt">
+                                    <button class="btn btn-outline-success" type="submit">Search</button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="btnAlt">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </div>
-                    </div>
-                </div>           
-        </div>  
+                        </div>           
+                </div>  
+            </div>
+            <div class="navbar chip-cnt">
+                <div class="form-group chips">    
+                    @foreach ($serversList as $key => $server)                                 
+                        <input class="server-display-chip" {{ $key==1 ? 'checked' : '' }} value="{{ $server->id }}" id="server{{ $server->name }}" name="selectedServer" type="radio">
+                        <label class="server-chip" data-off="Alt" data-on="Main" for="server{{ $server->name }}">{{ $server->name }}</label>
+                    @endforeach  
+                </div> 
+            </div>                
+        </form> 
+        @yield('content')
     </div>
-    <div class="navbar chip-cnt">
-        <div class="form-group chips">    
-            @foreach ($serversList as $key => $server)                                 
-                <input class="server-display-chip" {{ $key==1 ? 'checked' : '' }} value="{{ $server->id }}" id="server{{ $server->name }}" name="selectedServer" type="radio">
-                <label class="server-chip" data-off="Alt" data-on="Main" for="server{{ $server->name }}">{{ $server->name }}</label>
-            @endforeach  
-        </div> 
-    </div>                
-</form> 
-    @yield('content')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

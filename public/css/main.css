@@ -2,12 +2,46 @@
     text-align: center;
     padding:15px;
     color:#fff;
-}   
+}
 body{
     background: url('../images/bg/bg1.webp');
+    box-sizing: content-box;
+    overflow-y: scroll;
+    height: 100vh;
     background-size: cover;
-    max-width: 1200px;
-    margin: auto !important;
+    background-position: center;
+    padding: 0;
+    box-shadow: inset 0 0 50px 15px #000;
+        .layout-content{
+            max-width: 1200px;
+            margin: auto !important;
+            padding: 15px;
+        }
+        &:before{
+            content:"";
+            position: absolute;
+            background: rgba(0, 0, 0, 0.3);
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        &::-webkit-scrollbar-track
+        {
+            border-radius: 10px;
+            background-color: transparent;
+        }
+
+        &::-webkit-scrollbar
+        {
+            width: 12px;
+            background-color: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb
+        {
+            border-radius: 10px;
+            background-color: #555;
+        }
 }
 .mainTitle a{
     text-shadow: 0px 0px 5px #000;
@@ -310,6 +344,13 @@ header{
     }
 }
 
+@media only screen and (max-width: 1111px) {
+    body{
+        background-size: auto;
+        background-position: top left;
+    }
+}
+
 @media only screen and (max-width: 768px) {
     .list-grid{    
         grid-template-columns: auto auto;
@@ -548,26 +589,26 @@ header{
         height: 32px;
         display: block;
         margin: 0 10px;
-        transition: all 0.2s ease;
+        transition: all 0.5s ease;
     }
 
 
     input[type="checkbox"]#filterToggle:not(:checked) + .filterToggle::before,
     input[type="checkbox"]#filterToggle:not(:checked) + .filterToggle::after
     {
-        animation: swordClosed 0.1s alternate infinite ease-in-out;
+        animation: swordClosed 0.4s alternate infinite ease-in-out;
     }
     input[type="checkbox"]#filterToggle:not(:checked) ~ .filter-cnt{
         opacity: 0;
         height: 0;
-        transition: all 0.2s;
+        transition: all 0.4s ease-in-out;
     }
     
     input[type="checkbox"]#filterToggle:checked ~ .filter-cnt{
         height: 200px;
         opacity: 1;
         top: -15px;
-        transition: all 0.2s;
+        transition: all 0.4s ease-in-out;
     }
     
     .filterToggle::before{
@@ -584,22 +625,22 @@ header{
         top: 0px;
         display: block;
         position: relative;
-        transition: all 0.2s ease;
+        transition: all 0.4s ease-in-out;
     }
     
     input[type="checkbox"]#filterToggle:checked + label.filterToggle img{
         top: 20px;        
-        transition: all 0.2s ease;
+        transition: all 0.4s ease-in-out;
     }
     input[type="checkbox"]#filterToggle:checked + label.filterToggle:before{
         transform: rotate(180deg);
         margin: 0 0px;
-        transition: all 0.2s ease;
+        transition: all 0.4s ease-in-out;
     }
     input[type="checkbox"]#filterToggle:checked + label.filterToggle:after{
             transform: rotate(-90deg);
             margin: 0 0px;
-            transition: all 0.2s ease;
+            transition: all 0.4s ease-in-out;
     }
 
     @keyframes swordClosed {
