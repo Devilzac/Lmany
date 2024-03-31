@@ -16,9 +16,9 @@ Route::get('/search', [CharacterController::class, 'search'])->name('character.s
 Route::post('/filter-search', [CharacterController::class, 'filterSearch'])->name('character.filtersearch');
 
 
-Route::get('/relation', [CharacterController::class, 'relationIndex']);
+Route::get('/relation-f-2024', [CharacterController::class, 'relationIndex']);
 Route::post('/relationship', [CharacterController::class, 'relationing']);
 
 
-Route::post('/autor', [PendingCharacterController::class, 'autoRelationing']);
-Route::get('/pnd-char', [PendingCharacterController::class, 'index']);
+Route::post('/a-tor-2024', [PendingCharacterController::class, 'autoRelationing']);
+Route::get('/pnd-char-2024', [PendingCharacterController::class, 'index']);

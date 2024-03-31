@@ -17,50 +17,27 @@ class PendingCharacter extends Model
     public function autoRelateLeftToRight()
     {
         try {
-            $pending = PendingCharacter::all()->sortBy('name', SORT_NATURAL, true);
+           // Retrieve pending characters and sort by name in descending order
+            $pending = PendingCharacter::orderBy('character1', 'desc')->get();
+
             foreach ($pending as $p_char) {
-                
-                $leftChar = Character::where('name', $p_char->character1)->first(); 
-                $rChar = Character::where('name', $p_char->character2)->first();   
-                $server_id = $p_char->server->id;
-            
-                // if characters do not exist, create them
-                    if(empty($leftChar->name) || isset($leftChar->name) ){
-                        Character::firstOrCreate([
-                            'name' => $p_char->character1
-                            ],
-                            [
-                                'name' => $p_char->character1,
-                                'server_id'=> $server_id
-                            ]
-                        );
-                    }
+                // Find or create left character
+                $leftChar = Character::firstOrCreate(['name' => $p_char->character1]);
+                $leftChar->server_id = $p_char->server->id;
+                $leftChar->save();
+
+                // Find or create right character
+                $rChar = Character::firstOrCreate(['name' => $p_char->character2]);
+                $rChar->server_id = $p_char->server->id;
+                $rChar->save();
+
+                // Relate characters left to right
+                if (!$leftChar->relatedCharacters()->where('related_id', $rChar->id)->exists()) {
+                    $leftChar->relatedCharacters()->attach($rChar->id);
                     
-                    if(empty($rChar->name) || isset($rChar->name) ){
-                        Character::firstOrCreate([
-                            'name' => $p_char->character2
-                            ],
-                            [
-                                'name' => $p_char->character2,
-                                'server_id'=> $server_id
-                            ]
-                        );
-                    }
-                    
-                    // Update their server
-                    $leftChar = Character::where('name', $p_char->character1)->first();                     
-                    $leftChar->server_id = $server_id;
-                    $leftChar->save();
-
-                    $rChar = Character::where('name', $p_char->character2)->first();                   
-                    $rChar->server_id = $server_id;
-                    $rChar->save();
-
-                    // Relate characters left to right
-                    if(!$leftChar->relatedCharacters()->where('related_id', $rChar->id)->exists()){
-                        $leftChar->relatedCharacters()->attach($rChar->id);                 
-                    }  
-
+                    // Delete the pending character after successful relationship attachment
+                    $p_char->delete();
+                }
             }
             
         } catch (ModelNotFoundException $e) {

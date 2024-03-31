@@ -45,9 +45,11 @@
             </div>
             <div class="navbar chip-cnt">
                 <div class="form-group chips">    
-                    @foreach ($serversList as $key => $server)                                 
-                        <input class="server-display-chip" {{ $key==1 ? 'checked' : '' }} value="{{ $server->id }}" id="server{{ $server->name }}" name="selectedServer" type="radio">
-                        <label class="server-chip" data-off="Alt" data-on="Main" for="server{{ $server->name }}">{{ $server->name }}</label>
+                    @foreach ($serversList as $key => $server)    
+                        @if($server->name != 'Unknown' && $key!=11)
+                            <input class="server-display-chip" {{ $key==1 ? 'checked' : '' }} value="{{ $server->id }}" id="server{{ $server->name }}" name="selectedServer" type="radio">
+                            <label class="server-chip" data-off="Alt" data-on="Main" for="server{{ $server->name }}">{{ $server->name }}</label>
+                        @endif                            
                     @endforeach  
                 </div> 
             </div>                

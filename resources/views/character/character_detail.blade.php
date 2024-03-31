@@ -2,7 +2,7 @@
 @section('title', 'Adding Character')
 @section('content')
     <div id="container" class="detail">     
-        @if (isset($character))   
+        @if (isset($character->name) && !empty($character->name))   
             <!-- START LIST -->
             <ul class="list-flex">
                 <li>          
@@ -42,7 +42,7 @@
         @endif
 
     </div>    
-    @if (isset($character))   
+    @if (isset($character->name) && !empty($character->name))   
         <div id="container" class="detail">       
             <h2>Related</h2>
                 <ul class="list-grid">
