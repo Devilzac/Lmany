@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CharacterController;
+use App\Http\Controllers\PendingCharacterController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [CharacterController::class, "index"])->name('character.index');
@@ -17,3 +18,7 @@ Route::post('/filter-search', [CharacterController::class, 'filterSearch'])->nam
 
 Route::get('/relation', [CharacterController::class, 'relationIndex']);
 Route::post('/relationship', [CharacterController::class, 'relationing']);
+
+
+Route::post('/autor', [PendingCharacterController::class, 'autoRelationing']);
+Route::get('/pnd-char', [PendingCharacterController::class, 'index']);

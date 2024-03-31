@@ -65,6 +65,7 @@ class Character extends Model
             return response()->json(['error' => 'Character not found'], 404);
         }
     }
+    
  
     public function saveCharacterIfNoRecoreds($data)
     {

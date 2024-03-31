@@ -24,7 +24,10 @@ class Server extends Model
             //eturn $cases->paginate(1);
 
     }
-    
+    public function pendingCharacters()
+    {
+        return $this->hasMany(PendingCharacter::class);
+    }
     public function characters()
     {
         return $this->hasMany(Character::class);

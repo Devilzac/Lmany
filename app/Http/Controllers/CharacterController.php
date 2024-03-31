@@ -77,7 +77,7 @@ class CharacterController extends Controller
     {        
         $serversList = $this->servers;
         $character = Character::all();
-        return view('character.characterRelation', compact('character','serversList'));
+        return view('character.character_relation', compact('character','serversList'));
     }
 
     public function relationing(Request $request)

@@ -14,7 +14,7 @@ class ServerSeeder extends Seeder
      */
     public function run(): void
     {
-        $servers = ['SEA','SEA2', 'USW', 'USW2', 'UST', 'USE', 'EU', 'BR', 'LDN', 'USE2', 'SA'];
+        $servers = ['SEA','SEA2', 'USW', 'USW2', 'UST', 'USE', 'EU', 'BR', 'LDN', 'USE2', 'SA','Unknown'];
         asort($servers);// Order Alphabetically
         foreach ($servers as $server) {
             DB::table('servers')->insert([

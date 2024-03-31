@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('characters', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('tribe');
-            $table->string('description');
+            $table->string('tribe')->default('Unknown');
+            $table->string('description')->default('Unknown');
             $table->boolean('main_character')->default(false);
             $table->boolean('ghana')->default(false);
-            $table->foreignId('server_id')->constrained()->onDelete('cascade');
+            $table->foreignId('server_id')->default(12)->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

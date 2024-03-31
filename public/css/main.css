@@ -122,7 +122,11 @@ header{
 .navbar .nav-link, .navbar-brand{
     color: #fff !important;
 }
-.btnAlt{
+#container.out-relate-cnt{    
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+}
+.btnAlt, .out-relate{
     display: flex;
     justify-content: space-between;
     button.btn{
@@ -146,6 +150,20 @@ header{
             background-color: rgba(131, 188, 181, 0.5);
 
         }
+    }
+}
+
+.out-relate{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.8);
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    form{
+        width: auto;
     }
 }
 .filter-cnt{
