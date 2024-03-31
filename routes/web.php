@@ -12,7 +12,7 @@ Route::post('/adding-char', [CharacterController::class, "store"]);
 
 
 Route::get('/search', [CharacterController::class, 'search'])->name('character.search');
-Route::get('/filter-search', [CharacterController::class, 'filterSearch'])->name('character.filtersearch');
+Route::post('/filter-search', [CharacterController::class, 'filterSearch'])->name('character.filtersearch');
 
 
 Route::get('/relation', [CharacterController::class, 'relationIndex']);

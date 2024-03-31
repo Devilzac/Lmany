@@ -11,10 +11,11 @@ class Server extends Model
     
     public function filteredCharacterMainServerSearch($request)
     {
-        if($request->get('characterType') == null){
+        
+        if($request->get('character-type') == null){
             $charType = 0;
         } else {
-            $charType = request('characterType');
+            $charType = $request->get('character-type');
         }
             $id = $request->selectedServer;
             $result = Server::findOrFail($id);

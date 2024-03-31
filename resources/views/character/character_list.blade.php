@@ -7,28 +7,34 @@
     <div id="container">     
         <!-- START LIST -->
         <ul class="list-flex">
-            @foreach ($characters as $key => $character)    
-            <li>
-                <a href="{{url('/character/'.$character->id)}}">
-                    <div class="charList">
-                        <img class="" src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$character->name}}">
-                        <div class="mainCharInfo">
-                            <span class="">
-                            {{$character->name}}
-                            </span>
-                            <span class="">
-                                {{$character->tribe}}
-                            </span>
+            @if (count($characters)>0)                
+                @foreach ($characters as $key => $character)    
+                <li>
+                    <a href="{{url('/character/'.$character->id)}}">
+                        <div class="charList">
+                            <img class="" src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$character->name}}">
+                            <div class="mainCharInfo">
+                                <span class="">
+                                {{$character->name}}
+                                </span>
+                                <span class="">
+                                    {{$character->tribe}}
+                                </span>
+                            </div>
+                            <div class="altAmount">
+                                Related: {{ count($character->relatedCharacters) }}
+                                Server: {{$character->server->name}}
+                            </div>
                         </div>
-                        <div class="altAmount">
-                            Related: {{ count($character->relatedCharacters) }}
-                            Server: {{$character->server->name}}
-                        </div>
-                    </div>
-                </a>
-            </li>    
-            <hr>      
-            @endforeach()    
+                    </a>
+                </li>    
+                <hr>      
+                @endforeach()  
+                @else
+                    <h3>
+                        No Characters Found!
+                    </h3>  
+                @endif
         </ul>   
     </div>
 @endsection

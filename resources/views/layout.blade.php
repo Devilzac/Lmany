@@ -15,7 +15,12 @@
 <body>
     <h1 class="mainTitle"><a class="navbar-brand" href="{{ url('/') }}">Mystera Legacy Tracker</a></h1>
     <x-nav></x-nav>
-<form action={{ route('character.filtersearch') }} class="d-flex filter-cnt row-wrap" role="search" method="GET">
+    <input type="checkbox" name="filterToggle" id="filterToggle" />
+    <label class="filterToggle" for="filterToggle">
+        <img src="{{ asset('/images/toggle/shield.webp') }}" alt="">
+    </label>
+<form action={{ route('character.filtersearch') }} class="d-flex filter-cnt row-wrap" role="search" method="POST">
+    @csrf
     <div class="navbar">
         <div class="navbar-plus-filter">            
             <!-- START SEARCH -->
@@ -24,8 +29,8 @@
                         <div class="form-group">
                             <div class="btn-container character-type">
                                 <label class="switch btn-color-mode-switch">
-                                    <input value="1" id="characterType" name="characterType" type="checkbox">
-                                    <label class="btn-color-mode-switch-inner" data-off="Alt" data-on="Main" for="characterType"></label>
+                                    <input value="1" id="character-type" name="character-type" type="checkbox">
+                                    <label class="btn-color-mode-switch-inner" data-off="Alt" data-on="Main" for="character-type"></label>
                                 </label>    
                             </div>
                         </div>
@@ -38,13 +43,8 @@
     </div>
     <div class="navbar chip-cnt">
         <div class="form-group chips">    
-            {{-- <select id="inputState" name="selectedServer" class="form-control char-filter">                               
-                @foreach ($serversList as $key => $server)                                        
-                    <option {{ $key==0 ? 'selected' : '' }} value="{{ $server->id }}">{{ $server->name }}</option>
-                @endforeach                             
-            </select> --}}
             @foreach ($serversList as $key => $server)                                 
-                <input class="server-display-chip" {{ $key==0 ? 'checked' : '' }} value="{{ $server->id }}" id="server{{ $server->name }}" name="server" type="radio">
+                <input class="server-display-chip" {{ $key==1 ? 'checked' : '' }} value="{{ $server->id }}" id="server{{ $server->name }}" name="selectedServer" type="radio">
                 <label class="server-chip" data-off="Alt" data-on="Main" for="server{{ $server->name }}">{{ $server->name }}</label>
             @endforeach  
         </div> 

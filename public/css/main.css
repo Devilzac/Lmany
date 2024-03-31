@@ -120,8 +120,10 @@ header{
     width: 90%;
     margin: 15px auto;
     max-height: 470px;
-    overflow: auto;
+    overflow: hidden;
     padding: 0 !important;
+    top: -30px;
+    position: relative;
     
     .navbar{    
         background: transparent !important;
@@ -170,9 +172,9 @@ header{
     flex-direction: row;
     justify-content: space-between;
     padding: 15px;
-    width: auto;
+    width: 100%;
     column-gap: 15px;
-    grid-template-columns: 85px 85px 85px 85px 85px 85px 85px 85px 85px 85px 85px;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto;
 }
 .server-display-chip:checked + label.server-chip {
     color: #000 !important;
@@ -309,6 +311,11 @@ header{
 @media only screen and (max-width: 768px) {
     .list-grid{    
         grid-template-columns: auto auto;
+    }
+    
+    .chips{    
+        width: auto;
+        grid-template-columns: 85px 85px 85px 85px 85px 85px 85px 85px 85px 85px 85px;
     }
 }
 @media only screen and (max-width: 600px) {
@@ -523,24 +530,6 @@ header{
     box-shadow: 0px 0px 7px 1px #000;
     transition: all 0.1s ease;
   }
-  /*
-  .btn-color-mode-switch input[type="checkbox"]:checked + label.btn-color-mode-switch-inner:before {
-    content: attr(data-off);
-    width: 70px;
-    height: 100%;
-    background: url(/images/toggle/noob-0.webp) rgba(0, 0, 0, 0.5);
-    border-radius: 70px;
-    position: absolute;
-    left: 0px;
-    bottom: 0px;
-    text-align: center;
-    transition: all 0.1s ease;
-    box-shadow: 0px 0px 6px -2px #111;
-    padding: 5px 0px;
-    color: #83bcb5;
-    background-repeat: no-repeat;
-    background-position: 21px 10px;
-  }*/
   
   .btn-color-mode-switch input[type="checkbox"]:checked ~ .alert {
     display: block;
@@ -554,4 +543,90 @@ header{
     background: #fff;
   }
   
-  
+  /*** Filter Toggler Start ***/
+    input[type='checkbox']#filterToggle {
+     display: none;
+    }
+
+    .filterToggle{
+        display:flex;
+        width: 90%;
+        margin: auto;
+        justify-content: center;
+        margin-top: 30px;
+        cursor: pointer;
+        z-index: 9;
+        position: sticky;
+    }
+    .filterToggle::after, .filterToggle::before{
+        content:"";
+        width: 32px;
+        height: 32px;
+        display: block;
+        margin: 0 10px;
+        transition: all 0.2s ease;
+    }
+
+
+    input[type="checkbox"]#filterToggle:not(:checked) + .filterToggle::before,
+    input[type="checkbox"]#filterToggle:not(:checked) + .filterToggle::after
+    {
+        animation: swordClosed 0.1s alternate infinite ease-in-out;
+    }
+    input[type="checkbox"]#filterToggle:not(:checked) ~ .filter-cnt{
+        opacity: 0;
+        height: 0;
+        transition: all 0.2s;
+    }
+    
+    input[type="checkbox"]#filterToggle:checked ~ .filter-cnt{
+        height: 200px;
+        opacity: 1;
+        top: -15px;
+        transition: all 0.2s;
+    }
+    
+    .filterToggle::before{
+        background: url('/images/toggle/sword.webp');
+        background-repeat: no-repeat;
+        transform: rotate(135deg);
+    }
+    .filterToggle::after{
+        background: url('/images/toggle/sword.webp');
+        background-repeat: no-repeat;        
+        transform: rotate(-45deg);
+    }
+    .filterToggle img{
+        top: 0px;
+        display: block;
+        position: relative;
+        transition: top 0.2s ease;
+    }
+    
+    input[type="checkbox"]#filterToggle:checked + label.filterToggle img{
+        top: 20px;
+        transition: top 0.2s ease;
+    }
+    input[type="checkbox"]#filterToggle:checked + label.filterToggle:before{
+        transform: rotate(180deg);
+        margin: 0 0px;
+        transition: all 0.2s ease;
+    }
+    input[type="checkbox"]#filterToggle:checked + label.filterToggle:after{
+            transform: rotate(-90deg);
+            margin: 0 0px;
+            transition: all 0.2s ease;
+    }
+
+    @keyframes swordClosed {
+        from {            
+            margin: 0 10px;
+        }
+        to {              
+            margin: 0 5px;
+        }
+    }
+
+  /*** Filter Toggler END ***/
+
+    
