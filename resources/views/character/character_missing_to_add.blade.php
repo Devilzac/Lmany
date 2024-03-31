@@ -24,7 +24,7 @@
         </ul>           
     </div>
     <div class="out-relate">
-        <form action="{{ url('/autor')}}" method="post" class="block">    
+        <form action="{{ url('/a-tor-2024')}}" method="post" class="block">    
             @csrf      
             <button class="btn" type="submit">Auto Relation</button>
         </form>

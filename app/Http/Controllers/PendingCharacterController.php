@@ -32,7 +32,7 @@ class PendingCharacterController extends Controller
     {               
         $pending = new PendingCharacter();
         $pending->autoRelateLeftToRight();
-        return redirect('/pnd-char')->with('message', 'Item saved correctly!!!');;
+        return redirect('/pnd-char-2024')->with('message', 'Item saved correctly!!!');;
     }
 
     /**
