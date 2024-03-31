@@ -10,6 +10,7 @@ body{
     margin: auto !important;
 }
 .mainTitle a{
+    text-shadow: 0px 0px 5px #000;
     padding: 0 15px;
 }
 
@@ -203,6 +204,7 @@ header{
     border: solid 1px #83bcb5;
     border-radius: 70px;
     color: #83bcb5;
+    cursor: pointer;
     &:hover{
         background: rgba(255, 255, 255, 0.1);
         color:#83bcb5;
@@ -402,26 +404,8 @@ header{
     padding: 0;
     border: solid 1px #83bcb5;
     border-radius: 70px;
+    cursor: pointer;
   }
-  
-  /*
-  .btn-color-mode-switch > label.btn-color-mode-switch-inner:before {
-    content: attr(data-off);
-    width: 70px;
-    height: 100%;
-    background: url(/images/toggle/main-0.webp) rgba(0, 0, 0, 0.5);
-    border-radius: 70px;
-    position: absolute;
-    left: 70px;
-    bottom: 0px;
-    text-align: center;
-    transition: all 0.1s ease;
-    box-shadow: 0px 0px 6px -2px #111;
-    padding: 5px 0px;
-    color: #83bcb5;
-    background-repeat: no-repeat;
-    background-position: 21px 10px;
-  }*/
   
   .btn-color-mode-switch > label.btn-color-mode-switch-inner:after {
     content: attr(data-off);
@@ -600,12 +584,12 @@ header{
         top: 0px;
         display: block;
         position: relative;
-        transition: top 0.2s ease;
+        transition: all 0.2s ease;
     }
     
     input[type="checkbox"]#filterToggle:checked + label.filterToggle img{
-        top: 20px;
-        transition: top 0.2s ease;
+        top: 20px;        
+        transition: all 0.2s ease;
     }
     input[type="checkbox"]#filterToggle:checked + label.filterToggle:before{
         transform: rotate(180deg);
