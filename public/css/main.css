@@ -327,6 +327,7 @@ header{
         width: auto;
         display: block;
         text-align: right;
+        min-width: 110px;
     }
 }
 .mainCharInfo{
