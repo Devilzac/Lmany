@@ -4,7 +4,7 @@
     @if (session('message'))
     <div class="alert">{{ session('message') }}</div>
     @endif    
-    <div id="container">     
+    <div id="container" class="main-list">     
         <!-- START LIST -->
         <ul class="list-flex">
             @if (count($characters)>0)                
