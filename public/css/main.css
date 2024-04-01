@@ -396,6 +396,10 @@ header{
                 height: calc(100% + 120px) !important;
             }
         }
+        .charList
+        .altAmount {
+            text-wrap: nowrap !important;
+        }
 }
 @media only screen and (max-width: 600px) {
     .list-grid{    
