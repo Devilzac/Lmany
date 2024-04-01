@@ -16,8 +16,7 @@ return new class extends Migration
             // Add any additional columns you may need for your pending character model
             $table->string('character1');
             $table->string('character2');
-            $table->unsignedBigInteger('server_id');
-            
+            $table->unsignedBigInteger('server_id')->default(12);
             $table->foreign('server_id')
                   ->references('id')
                   ->on('servers')

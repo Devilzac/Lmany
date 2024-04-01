@@ -6,15 +6,14 @@
             <!-- START LIST -->
             <ul class="list-flex">
                 <li>          
+                    @if($character->relatedMainCharactersCount() > 1)
+                    <small class="white">>>> Shared Account <<<</small>
+                    @endif
                         <div class="charList">                        
                             <img src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$character->name}}">
                             <div class="mainCharInfo">
                                 <span>
                                 {{$character->name}}
-                                    @if($character->relatedMainCharactersCount() > 1)
-                                    <br>
-                                    >>> Shared with Main Accounts <<<
-                                    @endif
                                 </span>
                                 <span>
                                     {{$character->tribe}}   

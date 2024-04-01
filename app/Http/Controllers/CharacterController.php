@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Server;
 use App\Models\Character;
+use App\Models\PendingCharacter;
 use Illuminate\Http\Request;
 
 class CharacterController extends Controller
@@ -20,7 +21,7 @@ class CharacterController extends Controller
     public function index()
     {         
         $serversList = $this->servers;
-        $characters = Character::all();
+        $characters =  Character::paginate(50);
         return view("character.character_list", compact("characters", "serversList"));
     }
 
@@ -89,6 +90,8 @@ class CharacterController extends Controller
         $mainRelationn->mainRelation($main, $alt);
         return redirect('/')->with('message', 'Item saved correctly!!!');;
     }
+    
+    
     
 
     /**

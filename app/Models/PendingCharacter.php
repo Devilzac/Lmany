@@ -13,6 +13,7 @@ class PendingCharacter extends Model
     protected $fillable = [
         'character1',
         'character2',
+        'server',
     ];
     public function autoRelateLeftToRight()
     {

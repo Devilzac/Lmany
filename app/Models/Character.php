@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Log;
 
 class Character extends Model
 {
@@ -62,6 +64,21 @@ class Character extends Model
             $result =  Character::where('name', 'like', '%' . $search_param . '%')->get();
             return $result;
         } catch (ModelNotFoundException $e) {
+            return response()->json(['error' => 'Character not found'], 404);
+        }
+    }
+
+    
+    public function findOrCreateByExactName($search_param, $serv){
+        try {
+          
+            $result = Character::firstOrCreate(['name' => $search_param]);
+            $result->server_id = $serv;
+            $result->save();           
+
+            return $result;
+        } catch (Exception $e) {
+            Log::error($e->getMessage());
             return response()->json(['error' => 'Character not found'], 404);
         }
     }
