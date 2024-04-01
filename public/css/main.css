@@ -7,7 +7,6 @@ body{
     background: url('../images/bg/bg1.webp');
     box-sizing: content-box;
     overflow-y: scroll;
-    height: 100vh;
     background-size: cover;
     background-position: center;
     padding: 0;
@@ -21,8 +20,8 @@ body{
             position: absolute;
             background: rgba(0, 0, 0, 0.3);
             width: 100%;
-            height: 100%;
             z-index: -1;
+            height: inherit;
             box-shadow: inset 0 0 50px 15px #000;
         }
         &::-webkit-scrollbar-track
@@ -126,10 +125,6 @@ header{
 .navbar .nav-link, .navbar-brand{
     color: #fff !important;
 }
-#container.out-relate-cnt{    
-    border-bottom-left-radius: 0px !important;
-    border-bottom-right-radius: 0px !important;
-}
 .btnAlt, .out-relate{
     display: flex;
     justify-content: space-between;
@@ -161,15 +156,39 @@ header{
     width: 90%;
     margin: auto;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     background: rgba(0, 0, 0, 0.8);
-    border-bottom-left-radius: 7px;
-    border-bottom-right-radius: 7px;
+    padding-top: 15px;
+    position: relative;
     form{
-        width: auto;
+        width: auto;        
     }
+    nav{
+        justify-content: center;
+        display: flex;
+        margin-top: 15px;
+    }
+    
+    &::before {
+        content: '';
+        position: relative;
+        top: 0px;
+        left: 0;
+        width: 30%;
+        right: 0;
+        height: 5px;
+        background: transparent;
+        box-shadow: 0px 0px 10px 5px rgba(131, 188, 181, 0.1);
+        transition: box-shadow 0.3s ease;
+        margin: 15px auto;
+        
+    }
+
 }
+#container:hover ~ .out-relate:before {
+        box-shadow: 0px 0px 15px 7px rgba(131, 188, 181, 0.3);
+    }
 .filter-cnt{
     background: rgba(0, 0, 0, 0.8);
     padding: 30px;
@@ -392,14 +411,18 @@ header{
     #container{
         padding: 15px !important;
     }
-    body{
-            &:before{
-                height: calc(100% + 120px) !important;
-            }
-        }
+  
         .charList
         .altAmount {
             text-wrap: nowrap !important;
+        }
+        .out-relate:before {
+            width: 90%;
+        }
+        
+
+        footer {
+            width: 100% !important;
         }
 }
 @media only screen and (max-width: 600px) {
@@ -695,4 +718,43 @@ header{
 
   /*** Filter Toggler END ***/
 
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 1140px;
+}
+
+.layout-content {
+    width: 100%;
+    height: 100%;
     
+}
+
+
+    footer {
+        padding-top: 30px;
+        background: rgba(0, 0, 0, 0.8);
+        width: 90%;
+        left: 0;
+        right: 0;
+        margin: auto;
+        border-bottom-left-radius: 7px;
+        border-bottom-right-radius: 7px;
+        a{
+            display: flex;
+            font-size: 13px;
+            color: rgba(131, 188, 181, 1);
+            justify-content: center;
+            padding: 5px;
+            flex-direction: column;
+            figcaption {
+                align-self: center;
+                margin-left: 15px;
+                text-shadow: 0px 0px 10px #fff;
+            }
+        }
+        img{
+            width: 35px;
+            align-self: center;
+        }
+    }

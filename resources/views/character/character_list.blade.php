@@ -36,10 +36,9 @@
                         No Characters Found!
                     </h3>  
                 @endif
-        </ul>   
-    </div>
-    
-    <div class="out-relate">
+        </ul> 
+    </div>   
+    <div class="out-relate">     
         @if($characters instanceof \Illuminate\Pagination\LengthAwarePaginator )
             {{ $characters->links('pagination::bootstrap-4') }}
         @endif

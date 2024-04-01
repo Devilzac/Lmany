@@ -16,7 +16,9 @@
                                 {{$character->character2}}
                             </span>
                         </div>
-                        <span class="mainCharInfo">{{$character->message}}</span>
+                        <div class="altAmount">
+                            Server: {{$character->server->name}}
+                        </div>
                     </div>
             </li>    
             <hr>      
@@ -24,6 +26,7 @@
         </ul>           
     </div>
     <div class="out-relate">
+    </br>
         <form action="{{ url('/a-tor-2024')}}" method="post" class="block">    
             @csrf      
             <button class="btn" type="submit">Auto Relation</button>
