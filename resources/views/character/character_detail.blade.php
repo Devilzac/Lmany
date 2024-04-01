@@ -20,7 +20,7 @@
                                 </span>
                             </div>
                             <div class="altAmount">
-                                Related: {{ count($character->relatedCharacters) }}
+                                Related: {{ count($character->relatedCharacters) }}</br>
                                 Server: {{$character->server->name}}
                             </div>
                         </div>   
