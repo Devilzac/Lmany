@@ -31,6 +31,11 @@ class Character extends Model
     {
         try {
             $main = Character::findOrFail($idMain);
+                // Ensure $alts is an array
+            // if (!is_array($alts)) {
+            //     // Handle invalid input
+            //     return response()->json(['error' => 'Invalid input'], 400);
+            // }
             foreach ($main as $char) {
                 foreach ($alts as $alt_id) {
                     if(!$char->relatedCharacters()->where('related_id', $alt_id)->exists()){
