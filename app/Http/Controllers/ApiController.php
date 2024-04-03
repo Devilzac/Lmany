@@ -77,7 +77,7 @@ class ApiController extends Controller
                
                 try {       
                     //left to right relation (Char1 -> Char2))
-                    $primaryCharacter->relatedCharacters()->attach($secondaryCharacter->id);  
+                    $primaryCharacter->relatedCharacters()->attach($secondaryCharacter->id);     
                     
                     //Right to Left relation (Char2 -> Char1)
                     //$secondaryCharacter->relatedCharacters()->attach($primaryCharacter->id);  

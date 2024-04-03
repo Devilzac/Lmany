@@ -153,10 +153,7 @@
             flex-direction: column;
             width: 100%;
             justify-content: flex-end;
-            margin-left: 15px;             
-            &.description{
-                margin-left: 0px;
-            }
+            margin-left: 15px;       
         }
         .addMainAlt{
             display: flex;
