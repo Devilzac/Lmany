@@ -15,6 +15,10 @@ class ApiController extends Controller
     public function handle(Request $request){
        $data = $request->json()->all(); 
 
+        if (empty($data['character1']) || empty($data['character1']) || empty($data['server'])) {            
+            return response()->json(['error' => 'Invalid input'], 400);
+        }
+
         $character1 = $data['character1'];
         $character2 =$data['character2'];
         $ss = $data['server'];
@@ -46,4 +50,49 @@ class ApiController extends Controller
        
        return response()->json(['message' => "All went smooth"]);
     }
+
+
+
+    public function relationing(Request $request)
+    {      
+        
+        $data = $request->json()->all(); 
+
+        if (empty($data['character1']) || empty($data['character2']) || empty($data['server'])) {            
+            return response()->json(['error' => 'Invalid input'], 400);
+        }
+
+        $character1 = $data['character1'];
+        $character2 =$data['character2'];
+        $ss = $data['server'];
+
+        $character = new Character();
+        $server = new Server();
+        $serverID = $server->findServerByExactName($ss);
+       
+        $primaryCharacter = $character->findOrCreateByExactName($character1, $serverID);
+        $secondaryCharacter = $character->findOrCreateByExactName($character2, $serverID);
+    
+            if(!$primaryCharacter->relatedCharacters()->where('related_id', $secondaryCharacter->id)->exists()){ 
+               
+                try {       
+                    //left to right relation (Char1 -> Char2))
+                    $primaryCharacter->relatedCharacters()->attach($secondaryCharacter->id);  
+                    
+                    //Right to Left relation (Char2 -> Char1)
+                    //$secondaryCharacter->relatedCharacters()->attach($primaryCharacter->id);  
+
+                } catch (Exception $e) {
+                    // Log the exception
+                    Log::error($e->getMessage());
+                    // Return an error response
+                    return response()->json(['error' => $e->getMessage()], 500);
+                }
+           }      
+
+       return response()->json(['message' => "All went smooth"]);
+    }
+    
+    
+
 }

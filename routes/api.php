@@ -9,4 +9,4 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 
-Route::post('/endpoint', [ApiController::class, 'handle']);
+Route::post('/endpoint', [ApiController::class, 'relationing']);
