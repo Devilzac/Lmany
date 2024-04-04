@@ -782,3 +782,6 @@ header{
             align-self: center;
         }
     }
+    .pagination{
+        align-self: center;
+    }
