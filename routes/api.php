@@ -10,3 +10,4 @@ Route::get('/user', function (Request $request) {
 
 
 Route::post('/endpoint', [ApiController::class, 'relationing']);
+Route::post('/c-p-h-2024', [ApiController::class, 'clearPendingCharacter']);
