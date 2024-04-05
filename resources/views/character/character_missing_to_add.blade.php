@@ -25,17 +25,18 @@
             @endforeach()    
         </ul>           
     </div>
-    <div class="out-relate flex">
+    <div class="out-relate">
     </br>
-        <form action="{{ url('/api/a-tor-2024')}}" method="post" class="block">    
-            @csrf      
-            <button class="btn" type="submit">Auto Relation</button>
-        </form>
-    </br>
-        <form action="{{ url('/api/c-p-h-2024')}}" method="post" class="block">    
-            @csrf      
-            <button class="btn" type="submit">Clear List</button>
-        </form>
+        <div class="flex-center">
+            <form action="{{ url('/api/a-tor-2024')}}" method="post" class="block">    
+                @csrf      
+                <button class="btn" type="submit">Auto Relation</button>
+            </form>
+            <form action="{{ url('/api/c-p-h-2024')}}" method="post" class="block">    
+                @csrf      
+                <button class="btn" type="submit">Clear List</button>
+            </form>
+        </div>
         
     </div>
 @endsection
