@@ -68,13 +68,25 @@ class CharacterController extends Controller
         return view('character.character_list', compact('characters','serversList','search','search_param'));
       
     }
-    public function filterSearch(Request $request){
+    public function filterSearch(Request $request){      
+        if($request->get('character-type') == null){
+            $charType = 0;
+        } else {
+            $charType = $request->get('character-type');
+        }
+        $s = $request->selectedServer;
+        return redirect()->route('character.filterserv', ['serverid' => $s, 'chartype' => $charType]);
+    
+    }
+    public function fServer($serverid, $chartype){
         
         $serversList = $this->servers;
-        $newSearch = new Server();
-        $characters = $newSearch->filteredCharacterMainServerSearch($request);
-        $search=null;
-        return view('character.character_list', compact('characters','serversList', 'search'));      
+        $characters = Character::where('main_character', $chartype)
+                                ->where('server_id', $serverid)
+                                ->orderBy('name', 'asc')
+                                ->paginate(50);
+        $search=true;
+        return view('character.character_server_list', compact('characters','serversList', 'search','serversList'));      
     }
 
     public function relationIndex(Request $request)

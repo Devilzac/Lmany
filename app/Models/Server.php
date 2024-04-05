@@ -10,27 +10,6 @@ class Server extends Model
 {
     use HasFactory;
     
-    public function filteredCharacterMainServerSearch($request)
-    {
-        
-        if($request->get('character-type') == null){
-            $charType = 0;
-        } else {
-            $charType = $request->get('character-type');
-        }
-            try {
-                $id = $request->selectedServer;
-                $result2 = Character::where('main_character', $charType)
-                        ->where('server_id', $id)
-                        ->get();
-                return $result2;
-    
-            } catch (ModelNotFoundException $e) {
-                return Response::json(['error' => 'Server not found'], 404);
-            }
-    }
-
-
     public function findServerByExactName($name){
         try {
             $name = strtoupper($name);
