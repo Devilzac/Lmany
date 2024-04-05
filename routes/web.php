@@ -14,6 +14,7 @@ Route::post('/adding-char', [CharacterController::class, "store"]);
 
 Route::get('/search', [CharacterController::class, 'search'])->name('character.search');
 Route::post('/filter-search', [CharacterController::class, 'filterSearch'])->name('character.filtersearch');
+Route::get('/server/{serverid?}/{chartype?}', [CharacterController::class, 'fServer'])->name('character.filterserv');
 
 
 Route::get('/relation-f-2024', [CharacterController::class, 'relationIndex']);

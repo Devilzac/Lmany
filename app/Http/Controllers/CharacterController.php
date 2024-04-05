@@ -21,8 +21,9 @@ class CharacterController extends Controller
     public function index()
     {         
         $serversList = $this->servers;
-        $characters =  Character::paginate(50);
-        return view("character.character_list", compact("characters", "serversList"));
+        $characters =  Character::orderBy('name', 'asc')->paginate(50);
+        $search=false;
+        return view("character.character_list", compact("characters", "serversList","search"));
     }
 
     /**
@@ -63,15 +64,29 @@ class CharacterController extends Controller
         $character = new Character();
         $search_param = $request->query('search');
         $characters = $character->findByName($search_param);
-        return view('character.character_list', compact('characters','serversList'));
+        $search=true;
+        return view('character.character_list', compact('characters','serversList','search','search_param'));
       
     }
-    public function filterSearch(Request $request){
+    public function filterSearch(Request $request){      
+        if($request->get('character-type') == null){
+            $charType = 0;
+        } else {
+            $charType = $request->get('character-type');
+        }
+        $s = $request->selectedServer;
+        return redirect()->route('character.filterserv', ['serverid' => $s, 'chartype' => $charType]);
+    
+    }
+    public function fServer($serverid, $chartype){
         
         $serversList = $this->servers;
-        $newSearch = new Server();
-        $characters = $newSearch->filteredCharacterMainServerSearch($request);
-        return view('character.character_list', compact('characters','serversList'));      
+        $characters = Character::where('main_character', $chartype)
+                                ->where('server_id', $serverid)
+                                ->orderBy('name', 'asc')
+                                ->paginate(50);
+        $search=true;
+        return view('character.character_server_list', compact('characters','serversList', 'search','serversList'));      
     }
 
     public function relationIndex(Request $request)
