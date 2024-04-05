@@ -21,8 +21,9 @@ class CharacterController extends Controller
     public function index()
     {         
         $serversList = $this->servers;
-        $characters =  Character::paginate(50);
-        return view("character.character_list", compact("characters", "serversList"));
+        $characters =  Character::orderBy('name', 'asc')->paginate(50);
+        $search=false;
+        return view("character.character_list", compact("characters", "serversList","search"));
     }
 
     /**
@@ -63,7 +64,8 @@ class CharacterController extends Controller
         $character = new Character();
         $search_param = $request->query('search');
         $characters = $character->findByName($search_param);
-        return view('character.character_list', compact('characters','serversList'));
+        $search=true;
+        return view('character.character_list', compact('characters','serversList','search','search_param'));
       
     }
     public function filterSearch(Request $request){

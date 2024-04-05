@@ -61,7 +61,9 @@ class Character extends Model
     
     public function findByName($search_param){
         try {
-            $result =  Character::where('name', 'like', '%' . $search_param . '%')->paginate(15);
+            $result = Character::where('name', 'like', '%' . $search_param . '%')
+            ->orderBy('name', 'asc') // Order alphabetically by name
+            ->paginate(15);
             return $result;
         } catch (ModelNotFoundException $e) {
             return response()->json(['error' => 'Character not found'], 404);

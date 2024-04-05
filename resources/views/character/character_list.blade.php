@@ -39,26 +39,52 @@
         </ul> 
     </div>   
     <div class="out-relate">    
-        @if ($characters->lastPage() > 1)
-            <ul class="pagination">
-                @if($characters->currentPage() > 1)
-                    <li class="page-item">
-                        <a href="{{ $characters->url(1) }}" class="page-link">&laquo;</a>
-                    </li>
-                @endif
+        ?search=b&page=2
+        
+        @if ($search)
+            @if ($characters->lastPage() > 1)
+                <ul class="pagination">
+                    @if($characters->currentPage() > 1)
+                        <li class="page-item">
+                            <a href="{{ $characters->url(1) . '&search=' . $search_param }}" class="page-link">&laquo;</a>
+                        </li>
+                    @endif
+            
+                    @for ($i = max(1, $characters->currentPage() - 2); $i <= min($characters->lastPage(), $characters->currentPage() + 4); $i++)
+                        <li class="page-item {{ ($characters->currentPage() == $i) ? ' active' : '' }}">
+                            <a href="{{ $characters->url($i) . '&search=' . $search_param }}" class="page-link">{{ $i }}</a>
+                        </li>
+                    @endfor
+            
+                    @if($characters->currentPage() < $characters->lastPage())
+                        <li class="page-item">
+                            <a href="{{ $characters->url($characters->lastPage()) . '&search=' . $search_param }}" class="page-link">&raquo;</a>
+                        </li>
+                    @endif
+                </ul>
+            @endif    
+        @elseif ($search==false)
+            @if ($characters->lastPage() > 1)
+                <ul class="pagination">
+                    @if($characters->currentPage() > 1)
+                        <li class="page-item">
+                            <a href="{{ $characters->url(1) }}" class="page-link">&laquo;</a>
+                        </li>
+                    @endif
 
-                @for ($i = max(1, $characters->currentPage() - 2); $i <= min($characters->lastPage(), $characters->currentPage() + 4); $i++)
-                    <li class="page-item {{ ($characters->currentPage() == $i) ? ' active' : '' }}">
-                        <a href="{{ $characters->url($i) }}" class="page-link">{{ $i }}</a>
-                    </li>
-                @endfor
+                    @for ($i = max(1, $characters->currentPage() - 2); $i <= min($characters->lastPage(), $characters->currentPage() + 4); $i++)
+                        <li class="page-item {{ ($characters->currentPage() == $i) ? ' active' : '' }}">
+                            <a href="{{ $characters->url($i) }}" class="page-link">{{ $i }}</a>
+                        </li>
+                    @endfor
 
-                @if($characters->currentPage() < $characters->lastPage())
-                    <li class="page-item">
-                        <a href="{{ $characters->url($characters->lastPage()) }}" class="page-link">&raquo;</a>
-                    </li>
-                @endif
-            </ul>
+                    @if($characters->currentPage() < $characters->lastPage())
+                        <li class="page-item">
+                            <a href="{{ $characters->url($characters->lastPage()) }}" class="page-link">&raquo;</a>
+                        </li>
+                    @endif
+                </ul>
+            @endif
         @endif
  
     </div>
