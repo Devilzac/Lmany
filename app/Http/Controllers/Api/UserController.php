@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function createUser(Request $request)
     {
-    
+ 
         try {
             //Validated
             $validateUser = Validator::make($request->all(), 
@@ -53,6 +53,11 @@ class UserController extends Controller
                 'message' => $th->getMessage()
             ], 500);
         }
+    }
+    public function login(){
+        
+        $search=false;
+        return view('auth.login', compact('search'));
     }
 
     /**

@@ -1,8 +1,13 @@
 <?php
 
+use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\CharacterController;
 use App\Http\Controllers\PendingCharacterController;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/login', [UserController::class, 'login']);
+Route::post('/auth/login', [UserController::class, 'loginUser'])->name('login');;
+
 
 Route::get('/', [CharacterController::class, "index"])->name('character.index');
 Route::get('/character/{id}', [CharacterController::class, "show"]);
