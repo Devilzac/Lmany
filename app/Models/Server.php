@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use Illuminate\Support\Facades\Response;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -18,10 +18,16 @@ class Server extends Model
         } else {
             $charType = $request->get('character-type');
         }
-            $id = $request->selectedServer;
-            $result = Server::findOrFail($id);
-            $result2 = $result->characters->whereIn('main_character', $charType);
-            return $result2;
+            try {
+                $id = $request->selectedServer;
+                $result2 = Character::where('main_character', $charType)
+                        ->where('server_id', $id)
+                        ->get();
+                return $result2;
+    
+            } catch (ModelNotFoundException $e) {
+                return Response::json(['error' => 'Server not found'], 404);
+            }
     }
 
 

@@ -38,9 +38,7 @@
                 @endif
         </ul> 
     </div>   
-    <div class="out-relate">    
-        ?search=b&page=2
-        
+    <div class="out-relate">            
         @if ($search)
             @if ($characters->lastPage() > 1)
                 <ul class="pagination">
@@ -63,7 +61,7 @@
                     @endif
                 </ul>
             @endif    
-        @elseif ($search==false)
+        @elseif ($search===false)
             @if ($characters->lastPage() > 1)
                 <ul class="pagination">
                     @if($characters->currentPage() > 1)
@@ -83,8 +81,9 @@
                             <a href="{{ $characters->url($characters->lastPage()) }}" class="page-link">&raquo;</a>
                         </li>
                     @endif
-                </ul>
-            @endif
+                </ul>                
+            @endif            
+            @elseif ($search===null)
         @endif
  
     </div>

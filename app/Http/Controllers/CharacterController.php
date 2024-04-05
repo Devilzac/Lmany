@@ -73,7 +73,8 @@ class CharacterController extends Controller
         $serversList = $this->servers;
         $newSearch = new Server();
         $characters = $newSearch->filteredCharacterMainServerSearch($request);
-        return view('character.character_list', compact('characters','serversList'));      
+        $search=null;
+        return view('character.character_list', compact('characters','serversList', 'search'));      
     }
 
     public function relationIndex(Request $request)
