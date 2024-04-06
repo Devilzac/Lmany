@@ -12,3 +12,8 @@ Route::post('/auth/login', [UserController::class, 'loginUser']);
 
 Route::post('/endpoint', [ApiController::class, 'relationing']);
 Route::post('/c-p-h-2024', [ApiController::class, 'clearPendingCharacter']);
+
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::post('/auth/login', [UserController::class, 'logout']);
+});

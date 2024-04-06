@@ -17,14 +17,14 @@ class UserController extends Controller
      */
     public function createUser(Request $request)
     {
- 
+ //dd($request->all());
         try {
             //Validated
             $validateUser = Validator::make($request->all(), 
             [
                 'name' => 'required',
                 'email' => 'required|email|unique:users,email',
-                'password' => 'required'
+                'password' => 'required|confirmed'
             ]);
 
             if($validateUser->fails()){
@@ -54,6 +54,11 @@ class UserController extends Controller
             ], 500);
         }
     }
+    
+    public function registerino(){        
+        $search=false;
+        return view('auth.register', compact('search'));
+    }
     public function login(){
         
         $search=false;
@@ -66,7 +71,7 @@ class UserController extends Controller
      * @return User
      */
     public function loginUser(Request $request)
-    {
+    { 
         try {
             $validateUser = Validator::make($request->all(), 
             [
@@ -90,7 +95,7 @@ class UserController extends Controller
             }
 
             $user = User::where('email', $request->email)->first();
-
+            return redirect("/");
             return response()->json([
                 'status' => true,
                 'message' => 'User Logged In Successfully',
@@ -103,5 +108,19 @@ class UserController extends Controller
                 'message' => $th->getMessage()
             ], 500);
         }
+    }
+
+
+    
+    public function logout(Request $request){
+        $user = $request->user();    
+        // Revoke Sanctum token
+        $user->tokens()->delete();        
+        // Clear Laravel session data
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect("/");
+        //return response()->json(['message' => 'Logged out successfully']);
     }
 }

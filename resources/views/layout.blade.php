@@ -14,11 +14,33 @@
 </head>
 <body>
     <div class="layout-content">
+        <div class="first-nav navbar-brand">
+        
+            
+            <label class="loginToggle" for="loginToggle"></label>
+            <input type="checkbox" name="loginToggle" id="loginToggle" />
+            <div class="auth-cnt">
+                @auth                   
+                    <span id="welcome" class="welcome">Welcome, {{ Auth::user()->name }}!</span>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="btn auth-btn">
+                            {{ __('Logout') }}
+                        </button> 
+                    </form>                
+                @else   
+                    @if(!request()->is('login'))    
+                        <span>&nbsp;</span>     
+                        <a class="auth-btn" href="{{ route('login')  }}">Login</a>   
+                    @endif  
+                @endauth
+            </div>
+            <h1 class="mainTitle"><a href="{{ url('/') }}">Mystera Same IP Teacker</a></h1>
+        </div>
 
-        <h1 class="mainTitle"><a class="navbar-brand" href="{{ url('/') }}">Mystera Legacy Tracker</a></h1>
         <x-nav></x-nav>
         
-        @if (request()->path() !== 'login')
+        @if (request()->path() !== 'login' && request()->path() !== 'registerino')
             <input type="checkbox" name="filterToggle" id="filterToggle" />
             <label class="filterToggle" for="filterToggle">
                 <img src="{{ asset('/images/toggle/shield.webp') }}" alt="">

@@ -92,7 +92,7 @@ body{
 .lupa{
     stroke:#fff !important;
 }
-#container.login{  
+#container.login, #container.register{  
     .card{
         margin: 0px;
         background: rgba(255, 255, 255, 0.1);
@@ -838,3 +838,144 @@ header{
         }
     }
     
+    .first-nav.navbar-brand{
+        display: flex;
+        justify-content: end;
+        flex-wrap: wrap;
+        h1{
+            width: 100%;
+            a{
+                text-decoration: none;
+                color:#fff;
+            }
+        }
+        .auth-cnt{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: calc(15px + .5rem);
+        }
+        
+        button.auth-btn{
+            width: 100%;
+            max-width: 200px;
+        }
+        .auth-btn{
+            position: relative;
+            display: block;
+            background-repeat: no-repeat;
+            box-shadow: 0px 0px 5px -1px #83bcb5;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border: solid 1px #83bcb5;
+            border-radius: 5px;
+            color: #fff !important;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.1s ease;
+            max-width: 200px;
+            &:hover {
+                box-shadow: 0px 0px 5px -1px #83bcb5;
+                background-color: rgba(131, 188, 181, 0.5);
+            }
+        }
+        .welcome{
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            border-radius: 7px !important;
+            text-align: center;
+            display: block;
+            height: fit-content;
+        }
+    }
+    
+    #loginToggle{
+        display:none;
+    }
+    .loginToggle {
+        background: url(/images/Slime2.webp) 768px 48px rgba(0, 0, 0, 0.5);
+        border-radius: 30px;
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        cursor: pointer;
+        box-shadow: 0px 0px 5px -1px #83bcb5;
+        z-index: 99;
+        width: 48px;
+        height: 48px;
+        background-size: 768px 48px;
+        background-repeat: no-repeat;
+        background-position: 0 0;        
+        &:hover{
+            box-shadow:  0px 0px 10px 4px #83bcb5 !important;
+            animation: login 2s steps(1) infinite;
+        }
+    }
+    #loginToggle:not(:checked) ~ .auth-cnt{
+        opacity: 0;
+        height: 0;
+        font-size: 0;
+        padding: 0;
+        transition: all 0.4s ease-in-out;
+    }
+    
+    #loginToggle:checked ~ .auth-cnt{
+        height: 56px;
+        opacity: 1;
+        transition: all 0.4s ease-in-out;
+    }
+
+    @keyframes login {
+        0% {
+            background-position: 0 0;
+          }
+          6.25% {
+            background-position: -48px 0;
+          }
+          12.5% {
+            background-position: -96px 0;
+          }
+          18.75% {
+            background-position: -144px 0;
+          }
+          25% {
+            background-position: -192px 0;
+          }
+          31.25% {
+            background-position: -240px 0;
+          }
+          37.5% {
+            background-position: -288px 0;
+          }
+          43.75% {
+            background-position: -336px 0;
+          }
+          50% {
+            background-position: -384px 0;
+          }
+          56.25% {
+            background-position: -432px 0;
+          }
+          62.5% {
+            background-position: -480px 0;
+          }
+          68.75% {
+            background-position: -528px 0;
+          }
+          75% {
+            background-position: -576px 0;
+          }
+          81.25% {
+            background-position: -624px 0;
+          }
+          87.5% {
+            background-position: -672px 0;
+          }
+          93.75% {
+            background-position: -720px 0;
+          }
+          100% {
+            background-position: -768px 0;
+          }
+        
+      }
