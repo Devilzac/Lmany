@@ -1,9 +1,6 @@
 @extends('layout')
 @section('title', 'All Characters')
 @section('content')
-    @if (session('message'))
-    <div class="alert">{{ session('message') }}</div>
-    @endif    
     <div id="container" class="main-list">     
         <!-- START LIST -->
         <ul class="list-flex">

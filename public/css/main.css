@@ -924,6 +924,14 @@ header{
         opacity: 1;
         transition: all 0.4s ease-in-out;
     }
+    
+    #loginToggle:not(:checked) ~ .auth-cnt *{
+        pointer-events: none;
+    }
+    .alert{
+        color: #fff !important;
+        text-shadow: 1px 1px 10px green;
+    }
 
     @keyframes login {
         0% {

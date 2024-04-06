@@ -41,11 +41,12 @@ class UserController extends Controller
                 'password' => Hash::make($request->password)
             ]);
 
-            return response()->json([
+            return redirect()->route('login')->with('message', 'You have succesfully registered! Ask developer for admin rights');
+          /*  return response()->json([
                 'status' => true,
                 'message' => 'User Created Successfully',
                 'token' => $user->createToken("API TOKEN")->plainTextToken
-            ], 200);
+            ], 200);*/
 
         } catch (\Throwable $th) {
             return response()->json([
@@ -94,13 +95,14 @@ class UserController extends Controller
                 ], 401);
             }
 
-            $user = User::where('email', $request->email)->first();
-            return redirect("/");
-            return response()->json([
+            //$user = User::where('email', $request->email)->first();
+            return redirect()->route('character.index')->with('message', 'You have logged in');
+
+           /* return response()->json([
                 'status' => true,
                 'message' => 'User Logged In Successfully',
                 'token' => $user->createToken("API TOKEN")->plainTextToken
-            ], 200);
+            ], 200);*/
 
         } catch (\Throwable $th) {
             return response()->json([

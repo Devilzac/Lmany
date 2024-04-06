@@ -13,6 +13,10 @@
   
 </head>
 <body>
+        @if(session('message'))
+        <div class="alert">{{ session('message') }}</div>
+        @endif   
+    
     <div class="layout-content">
         <div class="first-nav navbar-brand">
         
