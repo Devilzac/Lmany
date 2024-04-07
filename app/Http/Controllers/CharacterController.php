@@ -68,6 +68,7 @@ class CharacterController extends Controller
         return view('character.character_list', compact('characters','serversList','search','search_param'));
       
     }
+
     public function filterSearch(Request $request){      
         if($request->get('character-type') == null){
             $charType = 0;
@@ -78,6 +79,7 @@ class CharacterController extends Controller
         return redirect()->route('character.filterserv', ['serverid' => $s, 'chartype' => $charType]);
     
     }
+
     public function fServer($serverid, $chartype){
         
         $serversList = $this->servers;
@@ -106,7 +108,12 @@ class CharacterController extends Controller
         return redirect('/')->with('message', 'Item saved correctly!!!');;
     }
     
-    
+    public function unlink($mainid,$altid)
+    {
+        $character = new Character();
+        $result = $character->unlink($mainid,$altid); 
+        return redirect()->back();
+    }
     
 
     /**

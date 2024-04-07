@@ -60,7 +60,9 @@
                         <li class="chip">
                             <a href="{{url('/character/'.$alt->id)}}">
                                 <div class="charList">
-                                    <img src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$alt->name}}">
+                                    @guest
+                                        <img src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$alt->name}}">
+                                    @endguest
                                     <div class="mainCharInfo">
                                         <span>
                                         {{$alt->name}} 
@@ -69,6 +71,17 @@
                                             {{$alt->tribe}}
                                         </span>
                                     </div>
+                                    @auth
+                                        @if(auth()->user()->is_admin)
+                                            <form method="post" action="{{ url('/unlink/'. $character->id . '/' . $alt->id) }} ">
+                                                @csrf            
+                                                <div class="form-group">                    
+                                                    <button type="submit" class="btn unlink-character">
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        @endif
+                                    @endauth                                  
                                 </div>
                             </a>
                         </li>      
@@ -76,4 +89,17 @@
                 </ul>       
         </div>
     @endif
+
+
+    
+    @auth()
+        <script>
+            $('.unlink-character').click(function(e){
+                e.preventDefault();
+                if (confirm('Are you sure you want to unlink this Alt?')) {
+                $(e.target).closest('form').submit();
+            }
+            });
+        </script>    
+    @endauth
 @endsection

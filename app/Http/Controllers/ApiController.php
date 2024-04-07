@@ -90,7 +90,7 @@ class ApiController extends Controller
                     $primaryCharacter->relatedCharacters()->attach($secondaryCharacter->id);     
                     
                     //Right to Left relation (Char2 -> Char1)
-                    //$secondaryCharacter->relatedCharacters()->attach($primaryCharacter->id);  
+                    $secondaryCharacter->relatedCharacters()->attach($primaryCharacter->id);  
 
                 } catch (Exception $e) {
                     // Log the exception

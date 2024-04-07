@@ -13,6 +13,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/adding-char', [CharacterController::class, "store"]);
     Route::post('/a-tor-2024', [PendingCharacterController::class, 'autoRelationing']);
     Route::get('/pnd-char-2024', [PendingCharacterController::class, 'index']);
+    
+    Route::post('/unlink/{mainid}/{altid}', [CharacterController::class, 'unlink']);
 });
 
 Route::get('/login', [UserController::class, 'login'])->name('login');
@@ -33,4 +35,6 @@ Route::get('/server/{serverid?}/{chartype?}', [CharacterController::class, 'fSer
 
 Route::get('/relation-f-2024', [CharacterController::class, 'relationIndex']);
 Route::post('/relationship', [CharacterController::class, 'relationing']);
+
+
 

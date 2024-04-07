@@ -108,6 +108,27 @@ class Character extends Model
     }
 
 
+    
+    public function unlink($mainid,$altid)
+    {
+        try {
+            $principal = Character::find($mainid); 
+            $secondary = Character::find($altid);
+            $result = $principal->relatedCharacters()->detach($secondary->id); // Detach a related character from principal Left to right
+            $result2 = $secondary->relatedCharacters()->detach($principal->id); // Detach a related character from secondary Right to Left
+            return $result;
+        } catch (Exception $e) {
+            Log::error($e->getMessage());
+            return response()->json([
+                'error' => 'Cant Unlink',
+                'result'=> $result,
+                'result2'=> $result2,
+            ], 400);
+        }
+    }
+    
+
+
     public function relatedCharacters()
     {
         return $this->belongsToMany(Character::class, 'character_character', 'character_id', 'related_id')->withTimestamps();

@@ -932,6 +932,144 @@ header{
         color: #fff !important;
         text-shadow: 1px 1px 10px green;
     }
+    .unlink-character {
+        background: url('/images/toggle/unlink2.webp');
+        width: 80px;
+        height: 52px;
+        background-repeat: no-repeat;
+        border: solid 1px #83bcb5;
+        border-left: 0px !important;
+        box-shadow: 0px 0px 0px 0px #83bcb5;
+        transition: all 0.2s;
+        background-position:center;
+        position: relative;
+        
+        &:before{
+            content: "Unlink";
+            font-size: 10px;
+            color: #fff;
+            top: 2px;
+            position: absolute;
+            text-align: center;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 80px;
+            height: 52px;      
+        }
+        &:after{
+            content: "";
+            bottom: 0px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+            background: url('/images/toggle/death.webp');
+            width: 52px;
+            height: 52px;
+            background-repeat: no-repeat;
+            background-position: 0px 0px;        
+        }
+        &:hover{          
+            
+            background: url('/images/toggle/unlink2.webp');
+            background-repeat: no-repeat;
+            width: 80px;
+            height: 52px;  
+            border: solid 1px #83bcb5;
+            transition: all 0.2s;
+            background-position:center;
+            animation: glowBtn 1s alternate infinite ease;
+            
+            &:before{
+                content: "Are you sure?";
+                font-size: 9px;
+                color: #fff;
+                top: 0px;
+                position: absolute;
+                text-align: center;
+                left: 0;
+                right: 0;
+                margin: auto;  
+            }
+            &:after{
+                animation: death 2s steps(1) infinite;    
+            }
+        }
+
+    }
+    
+@media only screen and (max-width: 768px) {
+    
+    .unlink-character {        
+        animation: glowBtn 1s alternate infinite ease;
+    }
+
+}
+    
+    @keyframes glowBtn {
+        0% {
+            box-shadow: 0px 0px 0px 0px #ea6664;
+        }
+        100% {
+            box-shadow: 0px 0px 15px 0px #ea6664
+        }
+
+    }
+
+    @keyframes death {
+        0% {
+            background-position: 0 0;
+          }
+          6.25% {
+            background-position: -48px 0;
+          }
+          12.5% {
+            background-position: -96px 0;
+          }
+          18.75% {
+            background-position: -144px 0;
+          }
+          25% {
+            background-position: -192px 0;
+          }
+          31.25% {
+            background-position: -240px 0;
+          }
+          37.5% {
+            background-position: -288px 0;
+          }
+          43.75% {
+            background-position: -336px 0;
+          }
+          50% {
+            background-position: -384px 0;
+          }
+          56.25% {
+            background-position: -432px 0;
+          }
+          62.5% {
+            background-position: -480px 0;
+          }
+          68.75% {
+            background-position: -528px 0;
+          }
+          75% {
+            background-position: -576px 0;
+          }
+          81.25% {
+            background-position: -624px 0;
+          }
+          87.5% {
+            background-position: -672px 0;
+          }
+          93.75% {
+            background-position: -720px 0;
+          }
+          100% {
+            background-position: -768px 0;
+          }
+    }
 
     @keyframes login {
         0% {
