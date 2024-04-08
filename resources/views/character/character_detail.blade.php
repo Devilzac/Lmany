@@ -74,11 +74,9 @@
                                     @auth
                                         @if(auth()->user()->is_admin)
                                             <form method="post" action="{{ url('/unlink/'. $character->id . '/' . $alt->id) }} ">
-                                                @csrf            
-                                                <div class="form-group">                    
-                                                    <button type="submit" class="btn unlink-character">
-                                                    </button>
-                                                </div>
+                                                @csrf                              
+                                                <button type="submit" class="btn unlink-character">
+                                                </button>
                                             </form>
                                         @endif
                                     @endauth                                  

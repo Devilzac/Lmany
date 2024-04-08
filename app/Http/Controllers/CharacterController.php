@@ -112,7 +112,7 @@ class CharacterController extends Controller
     {
         $character = new Character();
         $result = $character->unlink($mainid,$altid); 
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Character Unlinked correctly!!!');;;
     }
     
 
