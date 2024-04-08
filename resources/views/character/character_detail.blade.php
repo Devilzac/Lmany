@@ -35,17 +35,19 @@
                         </div>
                     </div>
                 </li> 
-                <hr>
-                <h5>Confirmation Message:</h5>
-                <li>
-                    <div class="charList">
-                        <div class="mainCharInfo msg">
-                            @foreach ($character->relatedCharacters as $alt)                               
-                                <small>{{$character->name}} has returned. (same IP as {{$alt->name}})</small>
-                            @endforeach()    
+                @auth                    
+                    {{-- <hr>
+                    <h5>Confirmation Message:</h5>
+                    <li>
+                        <div class="charList">
+                            <div class="mainCharInfo msg">
+                                @foreach ($character->relatedCharacters as $alt)                               
+                                    <small>{{$character->name}} has returned. (same IP as {{$alt->name}})</small>
+                                @endforeach()    
+                            </div>
                         </div>
-                    </div>
-                </li> 
+                    </li>  --}}
+                @endauth
             </ul>   
         @else        
             <h3>There is no character with that name. </h3>              
