@@ -382,6 +382,7 @@ header{
 }
 .charList{
     display: flex;
+    position: relative;
     img{
         height: 52px;
     }
@@ -920,6 +921,12 @@ header{
         imput, label, textarea, h2{
             width: 100%;
         }
+    }
+    img.toxic{
+        height: 30px;
+        position: absolute;
+        left: 37px;
+        top: 4px;
     }
     #loginToggle{
         display:none;

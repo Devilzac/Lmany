@@ -10,6 +10,10 @@
                     <a href="{{url('/character/'.$character->id)}}">
                         <div class="charList">
                             <img class="" src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$character->name}}">
+                            
+                            @if($character->ghana)
+                                <img class="toxic" width="30px" height="30px" src="{{url('images/toxic-player'.rand(1, 2).'.webp')}}" alt="Toxic Player">
+                            @endif
                             <div class="mainCharInfo">
                                 <span class="">
                                 {{$character->name}}

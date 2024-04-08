@@ -18,7 +18,10 @@
                     <small class="white">>>> Shared Account <<<</small>
                     @endif
                         <div class="charList">                        
-                            <img src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$character->name}}">
+                            <img src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$character->name}}">                            
+                            @if($character->ghana)
+                                <img class="toxic" width="30px" height="30px" src="{{url('images/toxic-player'.rand(1, 2).'.webp')}}" alt="Toxic Player">
+                            @endif
                             <div class="mainCharInfo">
                                 <span>
                                 {{$character->name}}
@@ -72,6 +75,10 @@
                                 <div class="charList">
                                     @guest
                                         <img src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$alt->name}}">
+                                        
+                                        @if($alt->ghana)
+                                            <img class="toxic" width="30px" height="30px" src="{{url('images/toxic-player'.rand(1, 2).'.webp')}}" alt="Toxic Player">
+                                        @endif
                                     @endguest
                                     <div class="mainCharInfo">
                                         <span>
