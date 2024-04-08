@@ -23,3 +23,6 @@ Route::post('/relationship', [CharacterController::class, 'relationing']);
 
 Route::post('/a-tor-2024', [PendingCharacterController::class, 'autoRelationing']);
 Route::get('/pnd-char-2024', [PendingCharacterController::class, 'index']);
+
+
+Route::get('/sync-chars-2024', [CharacterController::class, 'syncRelatedCharacters']);

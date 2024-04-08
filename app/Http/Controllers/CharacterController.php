@@ -132,4 +132,31 @@ class CharacterController extends Controller
     {
         //
     }
+
+    public function syncRelatedCharacters()
+    {
+        // Get all characters
+        $characters = Character::all();
+
+        // Loop through each character
+        foreach ($characters as $character) {
+            // Get the related characters for the current character
+            $relatedCharacters = $character->relatedCharacters()->pluck('id');
+            // Loop through each related character ID
+            foreach ($relatedCharacters as $relatedId) {
+                // Find the related character
+                $relatedCharacter = Character::findOrFail($relatedId);
+
+                // Check if the related character is already related to the current character
+                if (!$relatedCharacter->relatedCharacters()->where('related_id', $character->id)->exists()) {
+                    // If not, attach the current character to the related character
+               
+                    $relatedCharacter->relatedCharacters()->attach($character->id);
+                    $character->relatedCharacters()->attach($relatedId);
+                }
+            }
+        }
+
+        return response()->json(['message' => 'Related characters synced successfully']);
+    }
 }
