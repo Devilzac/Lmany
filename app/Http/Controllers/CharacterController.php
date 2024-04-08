@@ -119,17 +119,39 @@ class CharacterController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Character $character)
+    public function edit($id)
     {
-        //
+        $serversList = $this->servers;
+        $character = Character::find($id);
+        return view('character.character_edit', compact('character','serversList'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Character $character)
+    public function update(Request $request, $id)
     {
-        //
+        
+        if($request->get('main') == null){
+            $main = 0;
+        } else {
+            $main = $request->get('main');
+        }
+        
+        if($request->get('ghana') == null){
+            $ghana = 0;
+        } else {
+            $ghana = $request->get('ghana');
+        }
+
+        $char = Character::find($id);
+        $char->tribe = $request->input('tribe');
+        $char->description = $request->input('description');
+        $char->main_character = $main;
+        $char->ghana = $ghana;
+        $char->save();
+
+        return redirect('/character/'.$id)->with('message', 'Item updated successfully');
     }
 
     /**
@@ -138,5 +160,31 @@ class CharacterController extends Controller
     public function destroy(Character $character)
     {
         //
+    }
+
+    public function syncRelatedCharacters()
+    {
+        // Get all characters
+        $characters = Character::all();
+
+        // Loop through each character
+        foreach ($characters as $character) {
+            // Get the related characters for the current character
+            $relatedCharacters = $character->relatedCharacters()->pluck('id');
+            // Loop through each related character ID
+            foreach ($relatedCharacters as $relatedId) {
+                // Find the related character
+                $relatedCharacter = Character::findOrFail($relatedId);
+
+                // Check if the related character is already related to the current character
+                if (!$relatedCharacter->relatedCharacters()->where('related_id', $character->id)->exists()) {
+                    // If not, attach the current character to the related character
+               
+                    $relatedCharacter->relatedCharacters()->attach($character->id);
+                }
+            }
+        }
+
+        return response()->json(['message' => 'Related characters synced successfully']);
     }
 }

@@ -15,6 +15,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/pnd-char-2024', [PendingCharacterController::class, 'index']);
     
     Route::post('/unlink/{mainid}/{altid}', [CharacterController::class, 'unlink']);
+    
+    Route::get('/char/{id}/edit', [CharacterController::class, 'edit']);
+    Route::put('/char-update/{id}', [CharacterController::class, 'update']);
+
 });
 
 Route::get('/login', [UserController::class, 'login'])->name('login');
@@ -38,3 +42,8 @@ Route::post('/relationship', [CharacterController::class, 'relationing']);
 
 
 
+Route::post('/a-tor-2024', [PendingCharacterController::class, 'autoRelationing']);
+Route::get('/pnd-char-2024', [PendingCharacterController::class, 'index']);
+
+
+Route::get('/sync-chars-2024', [CharacterController::class, 'syncRelatedCharacters']);
