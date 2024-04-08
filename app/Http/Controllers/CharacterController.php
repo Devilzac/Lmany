@@ -152,7 +152,6 @@ class CharacterController extends Controller
                     // If not, attach the current character to the related character
                
                     $relatedCharacter->relatedCharacters()->attach($character->id);
-                    $character->relatedCharacters()->attach($relatedId);
                 }
             }
         }
