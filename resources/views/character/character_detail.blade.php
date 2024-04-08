@@ -3,9 +3,14 @@
 @section('content')
     <div id="container" class="detail">     
         @if (isset($character->name) && !empty($character->name))   
-            <div class="edit-cnt">
-                <a class="btn edit" href="{{ url('/char/' . $character->id . '/edit') }}">Edit</a>
-            </div>
+        
+            @auth
+                @if(auth()->user()->is_admin)
+                    <div class="edit-cnt">
+                        <a class="btn edit" href="{{ url('/char/' . $character->id . '/edit') }}">Edit</a>
+                    </div>
+                @endif                
+            @endauth
             <!-- START LIST -->
             <ul class="list-flex">
                 <li>          
