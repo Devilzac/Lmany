@@ -11,8 +11,11 @@
                 @foreach ($characters as $key => $character)    
                 <li>
                     <a href="{{url('/character/'.$character->id)}}">
-                        <div class="charList">
+                        <div class="charList  {{ ($character->main_character) ? 'main':'alt'  }}">
                             <img class="" src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$character->name}}">
+                            @if($character->ghana)
+                                <img class="toxic" src="{{url('images/toxic-player1.webp')}}" alt="Toxic Player">
+                            @endif
                             <div class="mainCharInfo">
                                 <span class="">
                                 {{$character->name}}

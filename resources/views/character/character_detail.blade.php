@@ -17,11 +17,8 @@
                     @if($character->relatedMainCharactersCount() > 1)
                     <small class="white">>>> Shared Account <<<</small>
                     @endif
-                        <div class="charList">                        
-                            <img src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$character->name}}">                            
-                            @if($character->ghana)
-                                <img class="toxic" width="30px" height="30px" src="{{url('images/toxic-player'.rand(1, 2).'.webp')}}" alt="Toxic Player">
-                            @endif
+                        <div class="charList  {{ ($character->main_character) ? 'main':'alt'  }}">  
+                            <img src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$character->name}}">   
                             <div class="mainCharInfo">
                                 <span>
                                 {{$character->name}}
@@ -38,6 +35,13 @@
                 </li>    
                 <hr>
                 
+                @if($character->ghana)                
+                    <h5 style="margin: 0;">
+                        Toxic Player
+                        <img width="23px" height="23px" src="{{url('images/toxic-player2.webp')}}" alt="Toxic Player">
+                    </h5>
+                    <hr>
+                @endif
                 <h3>Description</h3>
                 <li>
                     <div class="charList">

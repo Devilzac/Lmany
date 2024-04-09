@@ -19,27 +19,22 @@
     
     <div class="layout-content">
         <div class="first-nav navbar-brand">
-        
-            
-            <label class="loginToggle" for="loginToggle"></label>
+            <h1 class="mainTitle"><a href="{{ url('/') }}">ML char tracker</a></h1>
             <input type="checkbox" name="loginToggle" id="loginToggle" />
-            <div class="auth-cnt">
+            <label class="loginToggle" for="loginToggle">
                 @auth                   
-                    <span id="welcome" class="welcome">Welcome, {{ Auth::user()->name }}!</span>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button type="submit" class="btn auth-btn">
-                            {{ __('Logout') }}
+                            {{ __('Log Out') }}
                         </button> 
                     </form>                
                 @else   
-                    @if(!request()->is('login'))    
-                        <span>&nbsp;</span>     
-                        <a class="auth-btn" href="{{ route('login')  }}">Login</a>   
+                    @if(!request()->is('login'))   
+                        <a class="auth-btn" href="{{ route('login')  }}">Log In</a>   
                     @endif  
                 @endauth
-            </div>
-            <h1 class="mainTitle"><a href="{{ url('/') }}">Mystera Same IP Teacker</a></h1>
+            </label>
         </div>
 
         <x-nav></x-nav>
