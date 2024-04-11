@@ -1147,7 +1147,7 @@ header{
                 margin: auto;  
             }
             &:after{
-                animation: death 2s steps(1) infinite;    
+                animation: death 2s steps(1) infinite forwards;    
             }
         }
 
@@ -1160,6 +1160,63 @@ header{
             margin-left: 15px;
         }
     }
+ 
+    @keyframes drop {
+        0% {
+            transform: scale(0.1);
+            opacity: 1;
+        }       
+        100% {
+            transform: scale(1);
+            opacity: 0;
+        }
+    }
+    
+    @keyframes drop2 {
+        0% {
+            transform: scale(0.2);
+            width: 20px;
+            height: 20px;
+        }       
+        100% {
+            transform: scale(1);
+            width: 40px;
+            height: 40px;
+        }
+    }
+    input[type="checkbox"]#filterToggle:not(:checked) ~ .filterToggle .tapping{
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        display: block;
+        bottom: 0;
+        left: 0px;
+        right: 0px;
+        margin: auto;
+        opacity: 1;
+        border-radius: 40px;
+        border: solid 3px #fff;
+        transform: scale(.1);
+        animation: drop 2s infinite forwards; 
+        animation-iteration-count: 5;
+    }
+    input[type="checkbox"]#filterToggle:not(:checked) ~ .filterToggle .tapping::before{
+        content: "";
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        display: block;
+        bottom: 0px;
+        left: -1px;
+        right: 0px;
+        top: 0;
+        margin: auto;
+        border-radius: 40px;
+        border: solid 3px #fff;
+        animation: drop2 2s infinite forwards;
+        animation-iteration-count: 5;
+    }
+    
     
 @media only screen and (max-width: 768px) {
     
