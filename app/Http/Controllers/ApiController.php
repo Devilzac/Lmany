@@ -27,8 +27,8 @@ class ApiController extends Controller
         $server = new Server();
         $serverID = $server->findServerByExactName($ss);
        
-        $primaryCharacter = $character->findOrCreateByExactName($character1, $serverID);
-        $secondaryCharacter = $character->findOrCreateByExactName($character2, $serverID);
+        $primaryCharacter = $character->findOrCreateByExactNameAndServer($character1, $serverID);
+        $secondaryCharacter = $character->findOrCreateByExactNameAndServer($character2, $serverID);
     
             if(!$primaryCharacter->relatedCharacters()->where('related_id', $secondaryCharacter->id)->exists()){ 
                
@@ -80,8 +80,8 @@ class ApiController extends Controller
         $server = new Server();
         $serverID = $server->findServerByExactName($ss);
        
-        $primaryCharacter = $character->findOrCreateByExactName($character1, $serverID);
-        $secondaryCharacter = $character->findOrCreateByExactName($character2, $serverID);
+        $primaryCharacter = $character->findOrCreateByExactNameAndServer($character1, $serverID);
+        $secondaryCharacter = $character->findOrCreateByExactNameAndServer($character2, $serverID);
     
             if(!$primaryCharacter->relatedCharacters()->where('related_id', $secondaryCharacter->id)->exists()){ 
                

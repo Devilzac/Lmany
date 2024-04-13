@@ -17,7 +17,7 @@
                     @if($character->relatedMainCharactersCount() > 1)
                     <small class="white">>>> Shared Account <<<</small>
                     @endif
-                        <div class="charList  {{ ($character->main_character) ? 'main':'alt'  }}">  
+                        <div class="charList {{ ($character->main_character) ? 'main':'alt'  }}">  
                             <img src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$character->name}}">   
                             <div class="mainCharInfo">
                                 <span>
@@ -76,7 +76,7 @@
                     @foreach ($character->relatedCharacters as $alt) 
                         <li class="chip">
                             <a href="{{url('/character/'.$alt->id)}}">
-                                <div class="charList">
+                                <div class="charList {{ ($character->main_character) ? 'main':'alt'  }}">
                                     @guest
                                         <img src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$alt->name}}">
                                         

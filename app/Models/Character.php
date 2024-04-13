@@ -76,14 +76,21 @@ class Character extends Model
     }
 
     
-    public function findOrCreateByExactName($search_param, $serv){
+    public function findOrCreateByExactNameAndServer($search_param, $serv){
         try {
           
-            $result = Character::firstOrCreate(['name' => $search_param]);
-            $result->server_id = $serv;
-            $result->save();           
-
+            $result = Character::firstOrNew([
+                'name' => $search_param,
+                'server_id' => $serv
+            ]);
+            
+            if (!$result->exists) {
+                $result->server_id = $serv;
+                $result->save();
+            }     
+ 
             return $result;
+
         } catch (Exception $e) {
             Log::error($e->getMessage());
             return response()->json(['error' => 'Character not found'], 404);
