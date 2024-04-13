@@ -76,7 +76,7 @@
                     @foreach ($character->relatedCharacters as $alt) 
                         <li class="chip">
                             <a href="{{url('/character/'.$alt->id)}}">
-                                <div class="charList {{ ($character->main_character) ? 'main':'alt'  }}">
+                                <div class="charList {{ ($alt->main_character) ? 'main':'alt'  }}">
                                     @guest
                                         <img src="{{url('images/'.rand(1, 10).'.webp')}}" alt="{{$alt->name}}">
                                         
