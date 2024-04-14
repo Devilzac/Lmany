@@ -10,20 +10,23 @@ use Illuminate\Http\Request;
 class CharacterController extends Controller
 {
     protected $servers;
+    protected $totalCharacters;
 
     public function __construct(Server $servers)
     {
         $this->servers = $servers::all();
+        $this->totalCharacters = Character::count();
     }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {         
+        $totalCharacters = $this->totalCharacters;
         $serversList = $this->servers;
         $characters =  Character::orderBy('name', 'asc')->paginate(50);
         $search=false;
-        return view("character.character_list", compact("characters", "serversList","search"));
+        return view("character.character_list", compact("characters", "serversList","search","totalCharacters"));
     }
 
     /**
@@ -60,12 +63,13 @@ class CharacterController extends Controller
   
     public function search(Request $request)
     {
+        $totalCharacters = $this->totalCharacters;
         $serversList = $this->servers;
         $character = new Character();
         $search_param = $request->query('search');
         $characters = $character->findByName($search_param);
         $search=true;
-        return view('character.character_list', compact('characters','serversList','search','search_param'));
+        return view('character.character_list', compact('characters','serversList','search','search_param', 'totalCharacters'));
       
     }
 

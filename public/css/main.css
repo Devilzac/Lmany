@@ -88,6 +88,9 @@ body{
 #container.main-list{    
     border-bottom-left-radius: 0px !important;
     border-bottom-right-radius: 0px !important;
+    hr{
+        color: #fff;
+    }
 }
 .lupa{
     stroke:#fff !important;
@@ -1216,7 +1219,19 @@ header{
         animation: drop2 2s infinite forwards;
         animation-iteration-count: 5;
     }
-    
+    .char-amount{
+        width: 90%;
+        margin: auto;
+        color: #fff;
+        display: flex;
+        justify-content: end;
+        padding-bottom: 15px;
+        text-shadow: 1px 1px 5px #000,
+                    1px 1px 5px #000,
+                    1px 1px 5px #000,
+                    1px 1px 5px #000,
+                    1px 1px 5px #000;
+    }
     
 @media only screen and (max-width: 768px) {
     

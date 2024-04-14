@@ -19,7 +19,9 @@
     
     <div class="layout-content">
         <div class="first-nav navbar-brand">
-            <h1 class="mainTitle"><a href="{{ url('/') }}">ML char tracker</a></h1>
+            <h1 class="mainTitle">
+                <a href="{{ url('/') }}">ML char tracker</a>                
+            </h1>
             <input type="checkbox" name="loginToggle" id="loginToggle" />
             <label class="loginToggle" for="loginToggle">
                 @auth                   

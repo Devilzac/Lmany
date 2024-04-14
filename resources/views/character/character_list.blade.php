@@ -1,7 +1,10 @@
 @extends('layout')
 @section('title', 'All Characters')
 @section('content')
+    <small class="char-amount">{{$totalCharacters}} characters tracked</small>
     <div id="container" class="main-list">     
+        
+        <hr>      
         <!-- START LIST -->
         <ul class="list-flex">
             @if (count($characters)>0)                
