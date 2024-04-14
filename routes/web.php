@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/logout', [UserController::class, 'logout'])->name('logout');
-    Route::get('/add-char', [CharacterController::class, "create"]);
+    Route::get('/add-char', [CharacterController::class, "create"])->name('add.char');
     Route::post('/adding-char', [CharacterController::class, "store"]);
     Route::post('/a-tor-2024', [PendingCharacterController::class, 'autoRelationing']);
     Route::get('/pnd-char-2024', [PendingCharacterController::class, 'index']);

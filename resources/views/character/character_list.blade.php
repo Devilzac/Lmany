@@ -1,7 +1,7 @@
 @extends('layout')
 @section('title', 'All Characters')
 @section('content')
-    <small class="char-amount">{{$totalCharacters}} characters tracked</small>
+    <small class="char-amount">{{$totalCharacters}} characters tracked</small>        
     <div id="container" class="main-list">     
         
         <hr>      

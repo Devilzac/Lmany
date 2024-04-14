@@ -477,11 +477,15 @@ header{
         align-self: center !important;
     }
     #loginToggle:checked ~ .loginToggle {
-        width: 130px !important;
+        width: calc(100% - 40px) !important;
         justify-content: end !important;
         padding-right: 22px !important;
+        background: #000;
         transition: all 0.5s !important;
+
     }
+    
+   
     .first-nav.navbar-brand {
         justify-content: space-between !important;
     }
@@ -509,9 +513,8 @@ header{
             width: 100% !important;
         }
         .loginToggle{
-            position: relative !important;
-            top: 0 !important;
-            right: 0 !important;
+            right: 20px;
+            top: 20px;
             margin-bottom:15px !important;
         }
         .first-nav.navbar-brand{
@@ -968,6 +971,39 @@ header{
         align-items: center;
         transition: all 0.5s;
     }
+    #loginToggle:not(:checked) ~ .loginToggle .add-char-btn{
+        opacity: 0 !important;
+        pointer-events: all;
+        background: transparent !important;
+        left: 98px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.5s;
+        width: 30%;
+        border-radius: 0;
+        pointer-events: none;
+    }
+    #loginToggle:checked ~ .loginToggle .add-char-btn{
+        opacity: 1 !important;
+        background: transparent !important;
+        left: 98px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.5s;
+        width: 40%;
+        border-radius: 0;
+        pointer-events:all;        
+    }
     #loginToggle:checked ~ .loginToggle .auth-btn,
     #loginToggle:checked ~ .loginToggle form button.auth-btn{
         opacity: 1 !important;
@@ -982,7 +1018,7 @@ header{
         justify-content: center;
         align-items: center;
         transition: all 0.5s;
-        width: 60%;
+        width: 30%;
     }
     .loginToggle{        
         overflow: hidden;
@@ -1059,7 +1095,7 @@ header{
 
     
     #loginToggle:checked ~ .loginToggle{
-            width: 184px;
+            width: 300px;
             justify-content: end;
             padding-right: 22px;
             transition: all 0.5s;
@@ -1232,7 +1268,16 @@ header{
                     1px 1px 5px #000,
                     1px 1px 5px #000;
     }
+    .add-char form{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
     
+    .add-char form input, .add-char form select, .add-char form div{
+        margin-bottom: 15px;
+    }
+
 @media only screen and (max-width: 768px) {
     
     .unlink-character {        

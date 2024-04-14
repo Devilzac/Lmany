@@ -107,10 +107,15 @@ class Character extends Model
                 'name' => $data->input('name'),
                 'tribe' =>  $data->input('tribe'),
                 'description' => $data->input('description'),
+                'server_id' => $data->input('server_id'),
                 'main_character' => $data->has('main_character'),
                 'ghana' => $data->has('ghana')
             ]
         );
+        
+        $result->server_id = $data->input('server_id');
+        $result->save();
+        
         return $result;
     }
 

@@ -34,8 +34,9 @@ class CharacterController extends Controller
      */
     public function create()
     {        
-        $serversList = $this->servers;
-        return view("character.character_create", compact('serversList'));
+        $serversList = $this->servers;        
+        $serversOptions = Server::pluck('name', 'id');
+        return view("character.character_create", compact('serversList','serversOptions'));
     }
 
     /**
