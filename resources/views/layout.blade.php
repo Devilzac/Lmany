@@ -23,21 +23,23 @@
                 <a href="{{ url('/') }}">ML char tracker</a>                
             </h1>
             <input type="checkbox" name="loginToggle" id="loginToggle" />
-            <label class="loginToggle" for="loginToggle">
-                @auth                       
-                    <a class="add-char-btn" href="{{ route('add.char')  }}">Add Character</a>               
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <button type="submit" class="btn auth-btn">
-                            {{ __('Log Out') }}
-                        </button> 
-                    </form>                
+                @auth    
+                    <label class="loginToggle" for="loginToggle">                   
+                        <a class="add-char-btn" href="{{ route('add.char')  }}">Add Character</a>               
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="btn auth-btn">
+                                {{ __('Log Out') }}
+                            </button> 
+                        </form>                        
+                    </label>           
                 @else   
-                    @if(!request()->is('login'))   
-                        <a class="auth-btn" href="{{ route('login')  }}">Log In</a>   
-                    @endif  
+                    <label class="loginToggle short" for="loginToggle">           
+                        @if(!request()->is('login'))   
+                            <a class="auth-btn" href="{{ route('login')  }}">Log In</a>   
+                        @endif  
+                    </label>
                 @endauth
-            </label>
         </div>
 
         <x-nav></x-nav>

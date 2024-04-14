@@ -483,8 +483,7 @@ header{
         background: #000;
         transition: all 0.5s !important;
 
-    }
-    
+    }    
    
     .first-nav.navbar-brand {
         justify-content: space-between !important;
@@ -528,6 +527,12 @@ header{
     }
 }
 
+#loginToggle:checked ~ .loginToggle.short{
+    width: 140px !important;
+    a.auth-btn{
+        width: 60%;
+    }
+}
 .flexiCenter {
     display: flex;
     flex-direction: row;
