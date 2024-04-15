@@ -107,7 +107,8 @@ class Character extends Model
         );
 
         if (!$result->exists) {
-            $result->name = $data->input('name');
+            $name = str_replace(' ', '', $data->input('name'));
+            $result->name = $name;
             $result->tribe = $data->input('tribe');
             $result->description = $data->input('description');
             $result->server_id = $data->input('server_id');
