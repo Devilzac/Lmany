@@ -22,7 +22,7 @@
         </div>
         <div>
           <input type="checkbox" value="1" name="ghana" id="ghana">
-          <label for="ghana">Is it a ghana account? </label>
+          <label for="ghana">Is it a troll account? </label>
         </div>
 
       <button type="submit">Submit</button>
