@@ -100,21 +100,21 @@ class Character extends Model
  
     public function saveCharacterIfNoRecoreds($data)
     {
-        $result = Character::firstOrCreate([
-            'name' => $data->input('name')
-            ],
-            [
-                'name' => $data->input('name'),
-                'tribe' =>  $data->input('tribe'),
-                'description' => $data->input('description'),
-                'server_id' => $data->input('server_id'),
-                'main_character' => $data->has('main_character'),
-                'ghana' => $data->has('ghana')
+        $result = Character::firstOrNew([
+            'name' => $data->input('name'),
+            'server_id' => $data->input('server_id')
             ]
         );
-        
-        $result->server_id = $data->input('server_id');
-        $result->save();
+
+        if (!$result->exists) {
+            $result->name = $data->input('name');
+            $result->tribe = $data->input('tribe');
+            $result->description = $data->input('description');
+            $result->server_id = $data->input('server_id');
+            $result->main_character = $data->has('main_character');
+            $result->ghana = $data->has('ghana');
+            $result->save();
+        }     
         
         return $result;
     }
