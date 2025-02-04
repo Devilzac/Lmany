@@ -10,7 +10,7 @@ Route::post('/auth/register', [UserController::class, 'createUser']);
 Route::post('/auth/login', [UserController::class, 'loginUser']);
 
 
-Route::post('/endpoint', [ApiController::class, 'relationing']);
+Route::post('/e-n-d-o-p-o-i-n-t-o', [ApiController::class, 'relationing']);
 Route::post('/c-p-h-2024', [ApiController::class, 'clearPendingCharacter']);
 
 
