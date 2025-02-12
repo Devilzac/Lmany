@@ -88,10 +88,7 @@
         
         <footer>
             <figure>
-                <a href="https://discord.gg/cb5Evf7w5S" target="_blank">
-                    <img src="{{ asset('/images/social/discord.svg') }}" alt="Discord Broadcast channel">
-                    <figcaption>In collaboration with Anonym</figcaption>
-                </a>
+                    <figcaption>Copyright &copy; {{ date('Y') }}</figcaption>
             </figure>
         </footer>
     </div>
