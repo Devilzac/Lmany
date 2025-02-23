@@ -144,7 +144,9 @@ class Character extends Model
 
     public function relatedCharacters()
     {
-        return $this->belongsToMany(Character::class, 'character_character', 'character_id', 'related_id')->withTimestamps();
+        return $this->belongsToMany(Character::class, 'character_character', 'character_id', 'related_id')
+            ->withPivot('find_count')
+            ->withTimestamps();
     }
     
     public function relatedMainCharactersCount()

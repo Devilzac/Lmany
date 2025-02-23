@@ -842,19 +842,12 @@ header{
         margin: auto;
         border-bottom-left-radius: 7px;
         border-bottom-right-radius: 7px;
-        a{
-            display: flex;
-            font-size: 13px;
-            color: rgba(131, 188, 181, 1);
-            justify-content: center;
-            padding: 5px;
-            flex-direction: column;
             figcaption {
                 align-self: center;
-                margin-left: 15px;
                 text-shadow: 0px 0px 10px #fff;
+                text-align: center;
+                padding: 15px 0;
             }
-        }
         img{
             width: 35px;
             align-self: center;

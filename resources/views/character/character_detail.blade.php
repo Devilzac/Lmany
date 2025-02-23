@@ -84,13 +84,18 @@
                                             <img class="toxic" width="30px" height="30px" src="{{url('images/toxic-player'.rand(1, 2).'.webp')}}" alt="Toxic Player">
                                         @endif
                                     @endguest
-                                    <div class="mainCharInfo">
-                                        <span>
-                                        {{$alt->name}} 
-                                        </span>
-                                        <span>
-                                            {{$alt->tribe}}
-                                        </span>
+                                    <div class="altInfo">
+                                        <div class="alt">
+                                            <span>
+                                            {{$alt->name}} 
+                                            </span>
+                                            <span>
+                                                {{$alt->tribe}}
+                                            </span>
+                                        </div>
+                                        <div class="score">
+                                            Score: {{$alt->pivot->find_count}}
+                                        </div>
                                     </div>
                                     @auth
                                         @if(auth()->user()->is_admin)
